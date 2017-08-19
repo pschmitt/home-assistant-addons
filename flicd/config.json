@@ -1,0 +1,15 @@
+{
+  "name": "flicd",
+  "version": "1.0",
+  "slug": "flicd",
+  "description": "React to flic button presses",
+  "startup": "before",
+  "boot": "auto",
+  "ports": {
+    "5551/tcp": 5551
+  },
+  "host_network": "true",
+  "privileged": ["NET_ADMIN"],
+  "options": {},
+  "schema": {}
+}
