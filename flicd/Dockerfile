@@ -8,7 +8,7 @@ MAINTAINER Philipp Schmitt <philipp@schmitt.co>
 RUN case $(arch) in \
         x86_64|amd64) export ARCH=x86_64 ;; \
         i386) export ARCH=i386 ;; \
-        armv7l|aarch64) export ARCH=armv6l ;; \
+        armv6l|armv7l|aarch64) export ARCH=armv6l ;; \
     esac && \
     apt-get -y update && apt-get install -y git && \
     git clone https://github.com/50ButtonsEach/fliclib-linux-hci /tmp/src && \
