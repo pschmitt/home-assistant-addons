@@ -1,6 +1,6 @@
 {
   "name": "flicd",
-  "version": "1.1",
+  "version": "1.2",
   "slug": "flicd",
   "description": "React to flic button presses",
   "startup": "before",

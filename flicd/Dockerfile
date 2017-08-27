@@ -1,6 +1,7 @@
 #aarch64:FROM arm64v8/ubuntu
 #amd64:FROM ubuntu
-#armhf:FROM arm32v7/ubuntu
+#arm7hf:FROM arm32v6/ubuntu
+#arm6hf:FROM arm32v7/ubuntu
 #i386:FROM i386/ubuntu
 
 MAINTAINER Philipp Schmitt <philipp@schmitt.co>
