@@ -1,0 +1,13 @@
+{
+  "name": "zabbix-agent",
+  "version": "1.0",
+  "slug": "zabbix-agent",
+  "description": "Zabbix agent",
+  "startup": "before",
+  "boot": "auto",
+  "ports": {
+    "10050/tcp": 10050
+  },
+  "options": {"server": null, "hostname": "hassio"},
+  "schema": {"server": "str", "hostname": "str"}
+}
