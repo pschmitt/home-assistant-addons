@@ -3,8 +3,12 @@ services:
   - docker
 before_install:
   - sudo apt-get install jq
+env:
+  - ADDON=flicd
+  - ADDON=pilight
+  - ADDON=zabbix-agent
 script:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  - ./build.sh all
+  - ./build.sh "$ADDON"
 
 # vim: set ft=yaml et ts=2 sw=2 :
