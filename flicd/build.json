@@ -1,8 +1,8 @@
 {
   "build_from": {
-    "armhf": "armhf/ubuntu",
-    "aarch64": "arm64v8/ubuntu",
-    "i386": "i386/ubuntu",
-    "amd64": "ubuntu"
+    "armhf": "resin/raspberry-pi-debian",
+    "aarch64": "resin/aarch64-debian",
+    "i386": "i386/debian",
+    "amd64": "debian"
   }
 }

@@ -1,4 +1,5 @@
 {
+  "image": "pschmitt/hassio-addon-{arch}-flicd",
   "name": "flicd",
   "version": "1.1",
   "slug": "flicd",
@@ -9,7 +10,6 @@
     "5551/tcp": 5551
   },
   "host_network": "true",
-  "image": "pschmitt/hassio-addon-{arch}-flicd",
   "privileged": ["NET_ADMIN"],
   "options": {},
   "schema": {}

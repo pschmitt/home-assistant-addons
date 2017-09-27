@@ -8,14 +8,15 @@ RUN case $(arch) in \
         i386) export ARCH=i386 ;; \
         armv6l|armv7l|aarch64) export ARCH=armv6l ;; \
     esac && \
-    apt-get -y update && apt-get install -y git && \
+    apt-get update && \
+    apt-get install -y git && \
     git clone https://github.com/50ButtonsEach/fliclib-linux-hci /tmp/src && \
     cp /tmp/src/bin/${ARCH}/flicd /usr/bin/flicd && \
     chmod +x /usr/bin/flicd && \
     mkdir /config && \
     rm -rf /tmp/src && \
     apt-get remove --purge -y git && \
-    apt-get -y autoremove &&\
+    apt-get -y autoremove && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /data
