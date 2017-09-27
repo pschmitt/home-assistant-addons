@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - sudo apt-get install jq
+script:
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - ./build.sh all
+
+# vim: set ft=yaml et ts=2 sw=2 :
