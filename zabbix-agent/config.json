@@ -3,7 +3,7 @@
   "version": "1.0",
   "slug": "zabbix-agent",
   "description": "Zabbix agent",
-  "startup": "application",
+  "startup": "system",
   "boot": "auto",
   "ports": {
     "10050/tcp": 10050
