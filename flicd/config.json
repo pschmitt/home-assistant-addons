@@ -4,7 +4,7 @@
   "version": "1.1",
   "slug": "flicd",
   "description": "React to flic button presses",
-  "startup": "before",
+  "startup": "services",
   "boot": "auto",
   "ports": {
     "5551/tcp": 5551
