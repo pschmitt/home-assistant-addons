@@ -1,0 +1,17 @@
+{
+  "image": "pschmitt/hassio-addon-{arch}-pilight",
+  "name": "pilight",
+  "version": "1.0",
+  "slug": "pilight",
+  "description": "Pilight server",
+  "startup": "system",
+  "boot": "auto",
+  "devices": ["/dev/mem:/dev/mem:rwm"],
+  "privileged": ["SYS_RAWIO"],
+  "options": {},
+  "schema": {},
+  "ports": {
+    "5000/tcp": 5000,
+    "5001/tcp": 5001
+  }
+}
