@@ -16,21 +16,57 @@ addon_list() {
   done
 }
 
+addon_supports_arch() {
+  if [[ "$(jq .arch "${1}/config.json")" == "null" ]]
+  then
+    return
+  fi
+  [[ $(jq ".arch|index(\"${2}\")" "${1}/config.json") != "null" ]]
+}
+
+addon_supported_arch() {
+  # If arch is not set default to all
+  if [[ $(jq .arch "${1}/config.json") == "null" ]]
+  then
+    echo "all"
+    return
+  fi
+  jq -r ".arch|@tsv" "${1}/config.json"
+}
+
 build_addon() {
-  cd "$1" || exit 8
+  local build_cmd
   local target
-  if [[ -n "$2" ]]
+  local supported_arch
+
+  build_cmd="docker run --rm --privileged \
+    -v ~/.docker:/root/.docker \
+    -v "${PWD}/${1}:/data" \
+    homeassistant/amd64-builder \
+    -t /data"
+
+  if [[ -n "$2" && "$2" != "all" ]]
   then
     target="$2"
+    if ! addon_supports_arch "$1" "$target"
+    then
+      echo "Addon $1: No support for ARCH ${target}. Skip it." 2>/dev/null
+      return
+    fi
+    eval $build_cmd --$target
   else
     target=all
+    supported_arch=$(addon_supported_arch "$1")
+    if [[ "$supported_arch" == "all" ]]
+    then
+      eval $build_cmd --$target
+    else
+      for target in $supported_arch
+      do
+        eval $build_cmd --$target
+      done
+    fi
   fi
-  docker run --rm --privileged \
-    -v ~/.docker:/root/.docker \
-    -v "$PWD:/data" \
-    homeassistant/amd64-builder \
-    --$target -t /data
-  cd -
 }
 
 ADDONS=$(addon_list)
