@@ -3,11 +3,13 @@
   "version": "1.0",
   "slug": "zabbix-agent",
   "description": "Zabbix agent",
-  "startup": "before",
+  "startup": "application",
   "boot": "auto",
   "ports": {
     "10050/tcp": 10050
   },
+  "host_network": "true",
+  "image": "pschmitt/hassio-addon-{arch}-zabbix-agent",
   "options": {"server": null, "hostname": "hassio"},
   "schema": {"server": "str", "hostname": "str"}
 }

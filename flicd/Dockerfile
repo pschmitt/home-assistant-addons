@@ -1,7 +1,5 @@
-#aarch64:FROM arm64v8/ubuntu
-#amd64:FROM ubuntu
-#armhf:FROM arm32v7/ubuntu
-#i386:FROM i386/ubuntu
+ARG BUILD_FROM
+FROM $BUILD_FROM
 
 MAINTAINER Philipp Schmitt <philipp@schmitt.co>
 
