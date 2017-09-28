@@ -1,8 +1,13 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
+ARG BUILD_ARCH
+ARG BUILD_VERSION
+
+LABEL maintainer "Philipp Schmitt <philipp@schmitt.co>"
+
 RUN apt-get update && \
-    apt-get install -y wget && \
+    apt-get install -y wget gnupg && \
     echo "deb http://apt.pilight.org/ stable main" > /etc/apt/sources.list.d/pilight.list && \
     wget -O - http://apt.pilight.org/pilight.key | apt-key add - && \
     apt-get update && \
