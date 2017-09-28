@@ -41,9 +41,10 @@ build_addon() {
 
   build_cmd="docker run --rm --privileged \
     -v ~/.docker:/root/.docker \
+    -v ${PWD}/override/builder.sh:/usr/bin/builder.sh \
     -v "${PWD}/${1}:/data" \
     homeassistant/amd64-builder \
-    -t /data"
+    --addon -t /data"
 
   if [[ -n "$2" && "$2" != "all" ]]
   then
@@ -53,17 +54,17 @@ build_addon() {
       echo "Addon $1: No support for ARCH ${target}. Skip it." 2>/dev/null
       return
     fi
-    eval $build_cmd --$target
+    eval "$build_cmd --$target"
   else
     target=all
     supported_arch=$(addon_supported_arch "$1")
     if [[ "$supported_arch" == "all" ]]
     then
-      eval $build_cmd --$target
+      eval "$build_cmd --$target"
     else
       for target in $supported_arch
       do
-        eval $build_cmd --$target
+        eval "$build_cmd --$target"
       done
     fi
   fi
