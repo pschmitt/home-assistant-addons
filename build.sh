@@ -41,9 +41,8 @@ build_addon() {
 
   build_cmd="docker run --rm --privileged \
     -v ~/.docker:/root/.docker \
-    -v ${PWD}/override/builder.sh:/usr/bin/builder.sh \
     -v "${PWD}/${1}:/data" \
-    homeassistant/amd64-builder \
+    homeassistant/amd64-builder:latest \
     --addon -t /data"
 
   if [[ -n "$2" && "$2" != "all" ]]
