@@ -63,8 +63,9 @@ build_addon() {
     else
       for target in $supported_arch
       do
-        eval "$build_cmd --$target"
+        build_cmd="$build_cmd --$target"
       done
+      eval "$build_cmd"
     fi
   fi
 }
