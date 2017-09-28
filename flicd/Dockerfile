@@ -1,7 +1,10 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-MAINTAINER Philipp Schmitt <philipp@schmitt.co>
+ARG BUILD_ARCH
+ARG BUILD_VERSION
+
+LABEL maintainer "Philipp Schmitt <philipp@schmitt.co>"
 
 RUN case $(arch) in \
         x86_64|amd64) export ARCH=x86_64 ;; \
@@ -22,4 +25,5 @@ RUN case $(arch) in \
 WORKDIR /data
 VOLUME ["/data"]
 EXPOSE 5551
-ENTRYPOINT ["/usr/bin/flicd", "-f", "/data/flic-db", "-s", "0.0.0.0", "-p", "5551"]
+ENTRYPOINT ["/usr/bin/flicd"]
+CMD ["-f", "/data/flic-db", "-s", "0.0.0.0", "-p", "5551"]
