@@ -1,6 +1,6 @@
 {
   "build_from": {
-    "armhf": "multiarch/debian-debootstrap:armel-stretch",
+    "armhf": "resin/rpi-raspbian",
     "aarch64": "multiarch/debian-debootstrap:arm64-stretch",
     "i386": "multiarch/debian-debootstrap:i386-stretch",
     "amd64": "multiarch/debian-debootstrap:amd64-stretch"
