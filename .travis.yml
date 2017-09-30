@@ -4,11 +4,20 @@ services:
 before_install:
   - sudo apt-get install jq
 env:
-  - ADDON=flicd
-  - ADDON=pilight
-  - ADDON=zabbix-agent
+  - ADDON=flicd ARCH=armhf
+  - ADDON=flicd ARCH=aarch64
+  - ADDON=flicd ARCH=amd64
+  - ADDON=flicd ARCH=i386
+  - ADDON=pilight ARCH=armhf
+  - ADDON=pilight ARCH=aarch64
+  - ADDON=pilight ARCH=amd64
+  - ADDON=pilight ARCH=i386
+  - ADDON=zabbix-agent ARCH=armhf
+  - ADDON=zabbix-agent ARCH=aarch64
+  - ADDON=zabbix-agent ARCH=amd64
+  - ADDON=zabbix-agent ARCH=i386
 script:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  - ./build.sh "$ADDON"
+  - ./build.sh "$ADDON" "$ARCH"
 
 # vim: set ft=yaml et ts=2 sw=2 :
