@@ -78,7 +78,7 @@ then
   do
     build_addon "$addon" "$2"
   done
-elif [[ $1 =~ "help" ]]
+elif [[ "$1" =~ "help" ]]
 then
   usage
   exit 0
