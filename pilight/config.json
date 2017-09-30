@@ -7,8 +7,9 @@
   "description": "Pilight server",
   "startup": "services",
   "boot": "auto",
-  "devices": ["/dev/mem:/dev/mem:rwm"],
+  "devices": ["/dev/mem:/dev/mem:rw"],
   "privileged": ["SYS_RAWIO"],
+  "gpio": "true",
   "options": {},
   "schema": {},
   "ports": {
