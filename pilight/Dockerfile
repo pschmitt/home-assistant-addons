@@ -12,8 +12,8 @@ RUN apt-get update && \
     cd /tmp/pilight && \
     cmake . && \
     make install && \
-    apt-get remove --purge build-essential cmake git && \
-    apt-get autoremove && \
+    apt-get remove --purge -y build-essential cmake git && \
+    apt-get autoremove  -y && \
     rm -rf /tmp/pilight /var/lib/apt/lists/*
 
 COPY pilight-config.json /etc/pilight/config.json
