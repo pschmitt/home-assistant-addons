@@ -16,7 +16,7 @@ RUN apt-get update && \
     apt-get autoremove && \
     rm -rf /tmp/pilight /var/lib/apt/lists/*
 
-# VOLUME ["/config"]
+COPY pilight-config.json /etc/pilight/config.json
 
 EXPOSE 5000/tcp 5001/tcp
 
