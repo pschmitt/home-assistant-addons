@@ -1,0 +1,17 @@
+{
+  "name": "picam",
+  "image": "pschmitt/hassio-addon-{arch}-picamera",
+  "arch": ["armhf", "aarch64"],
+  "version": "1.0",
+  "slug": "picamera",
+  "description": "Expose your raspicam",
+  "startup": "before",
+  "boot": "auto",
+  "devices": ["/dev/vchiq:/dev/vchiq:rw"],
+  "ports": {
+    "8000/tcp": 8000
+  },
+  "host_network": "false",
+  "options": {"resolution": "800x600", "framerate": "24"},
+  "schema": {"resolution": "str", "framerate": "str"}
+}
