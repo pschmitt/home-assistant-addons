@@ -7,7 +7,7 @@ FRAMERATE="$(jq --raw-output '.framerate' $CONFIG_PATH)"
 
 if [[ -z "$RESOLUTION" ]]
 then
-    RESOLUTION=800x60
+    RESOLUTION=800x600
 fi
 
 if [[ -z "$FRAMERATE" ]]
