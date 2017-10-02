@@ -1,5 +1,5 @@
 {
-  "name": "picam",
+  "name": "picamera",
   "image": "pschmitt/hassio-addon-{arch}-picamera",
   "arch": ["armhf", "aarch64"],
   "version": "1.0",
