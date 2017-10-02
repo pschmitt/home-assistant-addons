@@ -1,11 +1,19 @@
+from http import server
+from threading import Condition
+import base64
 import io
 import logging
 import os
 import picamera
 import socketserver
-from threading import Condition
-from http import server
 
+
+# Parameters
+AUTH_USERNAME = os.environ.get('AUTH_USERNAME', 'pi')
+AUTH_PASSWORD = os.environ.get('AUTH_PASSWORD', 'picamera')
+AUTH_BASE64 = base64.b64encode('{}:{}'.format(
+    AUTH_USERNAME, AUTH_PASSWORD).encode('utf-8'))
+BASIC_AUTH = 'Basic {}'.format(AUTH_BASE64.decode('utf-8'))
 RESOLUTION = os.environ.get('RESOLUTION', '800x600').split('x')
 RESOLUTION_X = int(RESOLUTION[0])
 RESOLUTION_Y = int(RESOLUTION[1])
@@ -40,8 +48,25 @@ class StreamingOutput(object):
             self.buffer.seek(0)
         return self.buffer.write(buf)
 
+
 class StreamingHandler(server.BaseHTTPRequestHandler):
     def do_GET(self):
+        if self.headers.get('Authorization') is None:
+            self.do_AUTHHEAD()
+            self.wfile.write('no auth header received')
+        elif self.headers.get('Authorization') == BASIC_AUTH:
+            self.authorized_get()
+        else:
+            self.do_AUTHHEAD()
+            self.wfile.write('not authenticated'.encode('utf-8'))
+
+    def do_AUTHHEAD(self):
+        self.send_response(401)
+        self.send_header('WWW-Authenticate', 'Basic realm=\"picamera\"')
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+
+    def authorized_get(self):
         if self.path == '/':
             self.send_response(301)
             self.send_header('Location', '/index.html')
@@ -79,17 +104,20 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             self.send_error(404)
             self.end_headers()
 
+
 class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
     allow_reuse_address = True
     daemon_threads = True
 
-with picamera.PiCamera(resolution='{}x{}'.format(RESOLUTION_X, RESOLUTION_Y),
-        framerate=FRAMERATE) as camera:
-    output = StreamingOutput()
-    camera.start_recording(output, format='mjpeg')
-    try:
-        address = ('', 8000)
-        server = StreamingServer(address, StreamingHandler)
-        server.serve_forever()
-    finally:
-        camera.stop_recording()
+
+if __name__ == '__main__':
+    with picamera.PiCamera(resolution='{}x{}'.format(RESOLUTION_X, RESOLUTION_Y),
+            framerate=FRAMERATE) as camera:
+        output = StreamingOutput()
+        camera.start_recording(output, format='mjpeg')
+        try:
+            address = ('', 8000)
+            server = StreamingServer(address, StreamingHandler)
+            server.serve_forever()
+        finally:
+            camera.stop_recording()
