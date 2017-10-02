@@ -9,7 +9,6 @@ env:
   - ADDON=flicd ARCH=amd64
   - ADDON=flicd ARCH=i386
   - ADDON=picamera ARCH=armhf
-  - ADDON=picamera ARCH=aarch64
   - ADDON=pilight ARCH=armhf
   - ADDON=pilight ARCH=aarch64
   - ADDON=pilight ARCH=amd64
