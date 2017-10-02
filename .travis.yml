@@ -10,7 +10,6 @@ env:
   - ADDON=flicd ARCH=i386
   - ADDON=picamera ARCH=armhf
   - ADDON=pilight ARCH=armhf
-  - ADDON=pilight ARCH=aarch64
   - ADDON=pilight ARCH=amd64
   - ADDON=pilight ARCH=i386
   - ADDON=zabbix-agent ARCH=armhf
