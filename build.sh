@@ -50,8 +50,8 @@ build_addon() {
     target="$2"
     if ! addon_supports_arch "$1" "$target"
     then
-      echo "Addon $1: No support for ARCH ${target}. Skip it." 2>/dev/null
-      return
+      echo "Addon $1: No support for ARCH ${target}." 2>/dev/null
+      exit 3
     fi
     eval "$build_cmd --$target"
   else
