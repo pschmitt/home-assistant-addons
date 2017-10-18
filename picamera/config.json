@@ -12,6 +12,7 @@
     "8000/tcp": 8000
   },
   "host_network": "false",
+  "webui": "http://[HOST]:[PORT:8000]",
   "options": {"username": "pi", "password": "picamera", "resolution": "800x600", "framerate": "24", "hflip": false, "vflip": false, "rotate": "0"},
   "schema": {"username": "str", "password": "str", "resolution": "str", "framerate": "int", "hflip": "bool", "vflip": "bool", "rotate": "match(0|90|180|270)"}
 }
