@@ -2,7 +2,7 @@
   "name": "picamera",
   "image": "pschmitt/hassio-addon-{arch}-picamera",
   "arch": ["armhf"],
-  "version": "1.1",
+  "version": "1.2",
   "slug": "picamera",
   "description": "Expose your raspicam",
   "startup": "application",
