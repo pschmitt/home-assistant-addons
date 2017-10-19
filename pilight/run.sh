@@ -2,12 +2,11 @@
 
 # Extract config data
 CONFIG_PATH=/data/options.json
-ZABBIX_SERVER=$(jq --raw-output ".server" "$CONFIG_PATH")
-ZABBIX_HOSTNAME=$(jq --raw-output ".hostname" "$CONFIG_PATH")
+GPIO_PLATFORM=$(jq -r '.gpio_platform // empty' "$CONFIG_PATH")
+GPIO_PLATFORM=${GPIO_PLATFORM:-none} # default to none
 
-# Update zabbix-agent config
-sed -i 's/^\(Server\(Active\)\?\)=.*/\1='"${ZABBIX_SERVER}"'/' /etc/zabbix/zabbix_agentd.conf
-sed -i 's/^\(Hostname\)=.*/\1='"${ZABBIX_HOSTNAME}"'/' /etc/zabbix/zabbix_agentd.conf
+# Update pilight config
+sed -ir 's/("gpio-platform"): ".*"(.*)/\1: "'"$GPIO_PLATFORM"'"\2/' /etc/pilight/config.json
 
-# Run zabbix-agent in foreground
-exec su zabbix -s /bin/ash -c "zabbix_agentd -f"
+# Run pilight in foreground
+exec pilight-daemon -D

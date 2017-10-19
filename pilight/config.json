@@ -10,8 +10,8 @@
   "devices": ["/dev/mem:/dev/mem:rw"],
   "privileged": ["SYS_RAWIO"],
   "gpio": "true",
-  "options": {},
-  "schema": {},
+  "options": {"gpio_platform": "raspberrypi3"},
+  "schema": {"gpio_platform": "str"},
   "webui": "http://[HOST]:[PORT:5001]",
   "ports": {
     "5000/tcp": 5000,

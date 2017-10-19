@@ -6,7 +6,7 @@ ARG BUILD_VERSION
 
 LABEL maintainer "Philipp Schmitt <philipp@schmitt.co>"
 
-RUN apt-get update && \
+RUN echo $BUILD_ARCH; exit 9; apt-get update && \
     apt-get install -y wget gnupg && \
     echo "deb http://apt.pilight.org/ stable main" > /etc/apt/sources.list.d/pilight.list && \
     wget -O - http://apt.pilight.org/pilight.key | apt-key add - && \
@@ -17,8 +17,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY pilight-config.json /etc/pilight/config.json
+COPY run.sh /run.sh
 
 EXPOSE 5000/tcp 5001/tcp
 
-ENTRYPOINT ["/usr/local/sbin/pilight-daemon"]
-CMD ["-D"]
+ENTRYPOINT ["/run.sh"]
