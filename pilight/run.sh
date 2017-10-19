@@ -1,4 +1,4 @@
-#!/usr/bin/env ash
+#!/usr/bin/env bash
 
 # Extract config data
 CONFIG_PATH=/data/options.json
