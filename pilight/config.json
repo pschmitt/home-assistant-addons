@@ -12,6 +12,7 @@
   "gpio": "true",
   "options": {},
   "schema": {},
+  "webui": "http://[HOST]:[PORT:5001]",
   "ports": {
     "5000/tcp": 5000,
     "5001/tcp": 5001
