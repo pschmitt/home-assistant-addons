@@ -7,7 +7,7 @@ ARG BUILD_VERSION
 LABEL maintainer "Philipp Schmitt <philipp@schmitt.co>"
 
 RUN apt-get update && \
-    apt-get install -y wget gnupg && \
+    apt-get install -y wget gnupg jq && \
     echo "deb http://apt.pilight.org/ stable main" > /etc/apt/sources.list.d/pilight.list && \
     wget -O - http://apt.pilight.org/pilight.key | apt-key add - && \
     apt-get update && \
