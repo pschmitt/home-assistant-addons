@@ -6,7 +6,7 @@ ARG BUILD_VERSION
 
 LABEL maintainer "Philipp Schmitt <philipp@schmitt.co>"
 
-RUN echo $BUILD_ARCH; exit 9; apt-get update && \
+RUN apt-get update && \
     apt-get install -y wget gnupg && \
     echo "deb http://apt.pilight.org/ stable main" > /etc/apt/sources.list.d/pilight.list && \
     wget -O - http://apt.pilight.org/pilight.key | apt-key add - && \
