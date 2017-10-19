@@ -7,14 +7,14 @@ ARG BUILD_VERSION
 LABEL maintainer "Philipp Schmitt <philipp@schmitt.co>"
 
 RUN apt-get update && \
-    apt-get install -y build-essential cmake git libunwind-dev libpcap-dev && \
-    git clone --depth 5 -b master https://github.com/pilight/pilight.git /tmp/pilight && \
-    cd /tmp/pilight && \
-    cmake . && \
-    make install && \
-    apt-get remove --purge -y build-essential cmake git && \
-    apt-get autoremove  -y && \
-    rm -rf /tmp/pilight /var/lib/apt/lists/*
+    apt-get install -y wget gnupg && \
+    echo "deb http://apt.pilight.org/ stable main" > /etc/apt/sources.list.d/pilight.list && \
+    wget -O - http://apt.pilight.org/pilight.key | apt-key add - && \
+    apt-get update && \
+    apt-get install -y pilight && \
+    apt-get remove -y --purge wget && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY pilight-config.json /etc/pilight/config.json
 
