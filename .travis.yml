@@ -16,6 +16,10 @@ env:
   - ADDON=zabbix-agent ARCH=aarch64
   - ADDON=zabbix-agent ARCH=amd64
   - ADDON=zabbix-agent ARCH=i386
+  - ADDON=zhue ARCH=armhf
+  - ADDON=zhue ARCH=aarch64
+  - ADDON=zhue ARCH=amd64
+  - ADDON=zhue ARCH=i386
 script:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - ./build.sh "$ADDON" "$ARCH"
