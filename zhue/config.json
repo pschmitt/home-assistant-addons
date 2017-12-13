@@ -1,6 +1,6 @@
 {
   "name": "zhue",
-  "version": "1.1",
+  "version": "1.2",
   "slug": "zhue",
   "description": "React to Hue Dimmer Switch button presses",
   "startup": "system",
