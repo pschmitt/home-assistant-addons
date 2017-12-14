@@ -25,7 +25,7 @@ then
 fi
 
 # Run zhue
-exec python -m zhue.cli "$BRIDGE_COMMAND" -u "$HUE_USERNAME" \
+exec python -m zhue.cli $BRIDGE_COMMAND -u "$HUE_USERNAME" \
   switch "$HUE_SWITCH" \
   -w --ignore-pressed-events \
   -H "$HASS_URL" -P "$HASS_PASSWORD"
