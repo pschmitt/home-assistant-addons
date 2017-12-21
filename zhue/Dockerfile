@@ -11,7 +11,7 @@ ENV LANG C.UTF-8
 # Install requirements for add-on
 RUN apt-get update && \
     apt-get install -y jq && \
-    pip install zhue && \
+    pip install zhue==0.9.5 && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy data for add-on
