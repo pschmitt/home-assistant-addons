@@ -21,4 +21,4 @@ export HFLIP="${HFLIP:-false}"
 export VFLIP="${VFLIP:-false}"
 export ROTATION="${ROTATION:-0}"
 
-exec python /web_streaming.py
+exec python3 /web_streaming.py
