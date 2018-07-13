@@ -8,7 +8,8 @@ LABEL maintainer "Philipp Schmitt <philipp@schmitt.co>"
 
 RUN apt-get update && \
     apt-get install -y jq && \
-    READTHEDOCS=True pip install picamera && \
+    if ! command -v pip3; then apt-get install -y python3-pip; fi && \
+    READTHEDOCS=True pip3 install picamera && \
     rm -rf /var/lib/apt/lists/*
 
 COPY web_streaming.py /web_streaming.py
