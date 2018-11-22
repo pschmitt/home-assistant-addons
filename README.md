@@ -2,6 +2,7 @@
 hass.io addons by Philipp Schmitt
 
 Add to Home Assistant using the repository url: 
+Add to Home Assistant using the repository url:
 https://github.com/pschmitt/hassio-addons
 
 ## flicd
@@ -20,6 +21,14 @@ hci0 is busy, shutting down and retrying...
 Successfully bound HCI socket
 Flic server is now up and running!
 Initialization of Bluetooth controller done!
+```
+
+By default, flicd is going to use `hci0` bluetooth controller. If you have multiple bluetooth controllers you can configure flicd to use another controller by specifying it in `hci_dev` configuration setting of the add-on.
+
+```
+{
+  "hci_dev": "hci1"
+}
 ```
 
 After starting the flicd add-on, you might need to restart Home Assistant.
