@@ -10,4 +10,4 @@ then
 fi
 
 # Run flicd
-exec /usr/bin/flicd -f /data/flic-db -s "0.0.0.0" -p 5551 $HCI_DEV_PARAM
+exec /usr/bin/flicd -f /data/flic-db -s "0.0.0.0" -p 5551 -h "$HCI_DEV"
