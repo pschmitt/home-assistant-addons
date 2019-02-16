@@ -15,6 +15,8 @@ RUN apt-get update && \
     apt-get remove -y --purge wget && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
+    
+RUN echo 11 > /sys/class/gpio/export
 
 COPY pilight-config.json /etc/pilight/config.json
 COPY run.sh /run.sh
