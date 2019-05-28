@@ -1,6 +1,7 @@
 {
   "image": "pschmitt/hassio-addon-{arch}-flicd",
   "name": "flicd",
+  "arch": ["armhf", "aarch64"],
   "version": "1.2",
   "slug": "flicd",
   "description": "React to flic button presses",
