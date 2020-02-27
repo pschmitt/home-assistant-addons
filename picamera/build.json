@@ -1,6 +1,6 @@
 {
   "build_from": {
-    "armhf": "resin/raspberry-pi-python:3",
-    "aarch64": "multiarch/debian-debootstrap:arm64-stretch"
+    "armhf": "balenalib/armv7hf-python:3-run",
+    "aarch64": "balenalib/aarch64-python:3-run"
   }
 }
