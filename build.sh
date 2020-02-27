@@ -40,6 +40,7 @@ build_addon() {
   local supported_arch
 
   build_cmd="docker run --rm --privileged \
+    -v '/var/run/docker.sock:/var/run/docker.sock' \
     -v ~/.docker:/root/.docker \
     -v "${PWD}/${1}:/data" \
     homeassistant/amd64-builder:latest \
