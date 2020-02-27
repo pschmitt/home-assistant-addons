@@ -1,15 +1,27 @@
 {
   "name": "zhue",
-  "version": "1.3",
+  "version": "1.4",
   "slug": "zhue",
   "description": "React to Hue Dimmer Switch button presses",
   "startup": "system",
   "boot": "auto",
   "homeassistant_api": "true",
-  "image": "pschmitt/hassio-addon-{arch}-zhue",
-  "map": ["config"],
-  "options": {"hass_url": "http://hassio/homeassistant/api", "hass_password": null,
-              "hue_bridge": null, "hue_username": null, "hue_switch": "all"},
-  "schema": {"hass_url": "str", "hass_password": "str",
-             "hue_bridge": "str", "hue_username": "str", "hue_switch": "str"}
+  "image": "pschmitt/home-assistant-addon-{arch}-zhue",
+  "map": [
+    "config"
+  ],
+  "options": {
+    "hass_url": "http://hassio/homeassistant/api",
+    "hass_password": null,
+    "hue_bridge": null,
+    "hue_username": null,
+    "hue_switch": "all"
+  },
+  "schema": {
+    "hass_url": "str",
+    "hass_password": "str",
+    "hue_bridge": "str",
+    "hue_username": "str",
+    "hue_switch": "str"
+  }
 }

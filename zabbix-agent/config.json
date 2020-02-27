@@ -1,6 +1,6 @@
 {
   "name": "zabbix-agent",
-  "version": "1.1",
+  "version": "1.2",
   "slug": "zabbix-agent",
   "description": "Zabbix agent",
   "arch": [
@@ -16,7 +16,7 @@
     "10050/tcp": 10050
   },
   "host_network": "true",
-  "image": "pschmitt/hassio-addon-{arch}-zabbix-agent",
+  "image": "pschmitt/home-assistant-addon-{arch}-zabbix-agent",
   "options": {
     "server": null,
     "hostname": "homeassistant"

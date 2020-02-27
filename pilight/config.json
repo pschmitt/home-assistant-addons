@@ -1,17 +1,29 @@
 {
-  "image": "pschmitt/hassio-addon-{arch}-pilight",
-  "arch": ["amd64", "i386", "armhf"],
+  "image": "pschmitt/home-assistant-addon-{arch}-pilight",
+  "arch": [
+    "amd64",
+    "i386",
+    "armhf"
+  ],
   "name": "pilight",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "slug": "pilight",
   "description": "Pilight server",
   "startup": "services",
   "boot": "auto",
-  "devices": ["/dev/mem:/dev/mem:rw"],
-  "privileged": ["SYS_RAWIO"],
+  "devices": [
+    "/dev/mem:/dev/mem:rw"
+  ],
+  "privileged": [
+    "SYS_RAWIO"
+  ],
   "gpio": "true",
-  "options": {"gpio_platform": "raspberrypi3"},
-  "schema": {"gpio_platform": "str"},
+  "options": {
+    "gpio_platform": "raspberrypi3"
+  },
+  "schema": {
+    "gpio_platform": "str"
+  },
   "webui": "http://[HOST]:[PORT:5001]",
   "ports": {
     "5000/tcp": 5000,
