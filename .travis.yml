@@ -17,7 +17,6 @@ env:
   - ADDON=picamera ARCH=aarch64
   - ADDON=pilight ARCH=armhf
   - ADDON=pilight ARCH=amd64
-  - ADDON=pilight ARCH=i386
   - ADDON=zabbix-agent ARCH=armhf
   - ADDON=zabbix-agent ARCH=aarch64
   - ADDON=zabbix-agent ARCH=amd64
