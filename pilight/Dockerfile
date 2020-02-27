@@ -11,7 +11,7 @@ RUN apt-get update && \
     echo "deb http://apt.pilight.org/ stable main" > /etc/apt/sources.list.d/pilight.list && \
     wget -O - http://apt.pilight.org/pilight.key | apt-key add - && \
     apt-get update && \
-    if [[ "$(uname -m)" == "armv7l" ]] \
+    if [[ "$(uname -m)" =~ arm* ]] \
     then \
       wget -O /tmp/libmbedx509-0_2.6.0-1_armhf.deb http://apt.pilight.org/pool/stable/main/l/libmbedx509-0/libmbedx509-0_2.6.0-1_armhf.deb && \
       wget -O /tmp/libmbedtls10_2.6.0-1_armhf.deb http://apt.pilight.org/pool/stable/main/l/libmbedtls10/libmbedtls10_2.6.0-1_armhf.deb && \
