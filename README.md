@@ -1,5 +1,5 @@
-# hassio-addons
-hass.io addons by Philipp Schmitt
+# home-assistant-addons
+Home Assistant addons by Philipp Schmitt
 
 Add to Home Assistant using the repository url: 
 https://github.com/pschmitt/home-assistant-addons
