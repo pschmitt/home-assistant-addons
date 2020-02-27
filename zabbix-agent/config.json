@@ -1,8 +1,15 @@
 {
   "name": "zabbix-agent",
-  "version": "1.0",
+  "version": "1.1",
   "slug": "zabbix-agent",
   "description": "Zabbix agent",
+  "arch": [
+    "armhf",
+    "armv7",
+    "aarch64",
+    "amd64",
+    "i386"
+  ],
   "startup": "system",
   "boot": "auto",
   "ports": {
@@ -10,6 +17,12 @@
   },
   "host_network": "true",
   "image": "pschmitt/hassio-addon-{arch}-zabbix-agent",
-  "options": {"server": null, "hostname": "hassio"},
-  "schema": {"server": "str", "hostname": "str"}
+  "options": {
+    "server": null,
+    "hostname": "homeassistant"
+  },
+  "schema": {
+    "server": "str",
+    "hostname": "str"
+  }
 }
