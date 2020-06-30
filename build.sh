@@ -41,7 +41,7 @@ build_addon() {
 
   build_cmd="docker run --rm --privileged \
     -v '/var/run/docker.sock:/var/run/docker.sock' \
-    -v ~/.docker:/root/.docker \
+    -v "${DOCKER_CONFIG:-~/.docker}:/root/.docker" \
     -v "${PWD}/${1}:/data" \
     homeassistant/amd64-builder:latest \
     --addon -t /data"
