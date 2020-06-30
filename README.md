@@ -1,4 +1,8 @@
 # home-assistant-addons
+
+[![Build](https://github.com/pschmitt/home-assistant-addons/workflows/Build/badge.svg)]
+(https://github.com/pschmitt/home-assistant-addons/actions?query=workflow%3ABuild)
+
 Home Assistant addons by Philipp Schmitt
 
 Add to Home Assistant using the repository url: 
