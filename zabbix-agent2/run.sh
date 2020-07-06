@@ -10,4 +10,4 @@ sed -i 's/^\(Server\(Active\)\?\)=.*/\1='"${ZABBIX_SERVER}"'/' /etc/zabbix/zabbi
 sed -i 's/^\(Hostname\)=.*/\1='"${ZABBIX_HOSTNAME}"'/' /etc/zabbix/zabbix_agentd2.conf
 
 # Run zabbix-agent2 in foreground
-exec su zabbix -s /bin/ash -c "zabbix_agentd -f -v"
+exec su zabbix -s /bin/ash -c "zabbix_agent2 -f -v"
