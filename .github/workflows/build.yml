@@ -16,6 +16,7 @@ jobs:
           - picamera
           - pilight
           - zabbix-agent
+          - zabbix-agent2
         arch:
           - aarch64
           - amd64
