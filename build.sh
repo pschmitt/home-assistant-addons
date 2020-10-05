@@ -83,11 +83,15 @@ elif [[ "$1" =~ "help" ]]
 then
   usage
   exit 0
+elif [[ -z "$1" ]]
+then
+  usage >&2
+  exit 2
 elif grep -q "$1" <<< "$ADDONS"
 then
   build_addon "$1" "$2"
 else
-  usage
+  echo "Unknown addon: $1"
   exit 2
 fi
 
