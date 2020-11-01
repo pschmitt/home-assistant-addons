@@ -23,8 +23,6 @@ jobs:
           - armhf
           - i386
         exclude:
-          - addon: flicd
-            arch: aarch64
           - addon: picamera
             arch: amd64
           - addon: picamera
