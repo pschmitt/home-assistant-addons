@@ -10,6 +10,7 @@
   "description": "Pilight server",
   "startup": "services",
   "boot": "auto",
+  "apparmor": "false",
   "devices": [
     "/dev/mem:/dev/mem:rw"
   ],
