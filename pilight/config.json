@@ -5,7 +5,7 @@
     "armhf"
   ],
   "name": "pilight",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "slug": "pilight",
   "description": "Pilight server",
   "startup": "services",
