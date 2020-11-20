@@ -28,8 +28,6 @@ jobs:
           - addon: picamera
             arch: i386
           - addon: pilight
-            arch: aarch64
-          - addon: pilight
             arch: i386
     steps:
       - name: Checkout repo
