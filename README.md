@@ -45,7 +45,3 @@ Pilight server.
 ## zabbix-agent
 
 Zabbix agent.
-
-## zhue
-
-React to Hue Dimmer Switch button presses.
