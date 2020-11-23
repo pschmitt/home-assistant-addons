@@ -40,7 +40,8 @@ build_addon() {
   local supported_arch
 
   build_cmd="docker run --rm --privileged \
-    -v ~/.docker:/root/.docker \
+    -v '/var/run/docker.sock:/var/run/docker.sock' \
+    -v "${DOCKER_CONFIG:-~/.docker}:/root/.docker" \
     -v "${PWD}/${1}:/data" \
     homeassistant/amd64-builder:latest \
     --addon -t /data"
@@ -82,11 +83,15 @@ elif [[ "$1" =~ "help" ]]
 then
   usage
   exit 0
+elif [[ -z "$1" ]]
+then
+  usage >&2
+  exit 2
 elif grep -q "$1" <<< "$ADDONS"
 then
   build_addon "$1" "$2"
 else
-  usage
+  echo "Unknown addon: $1"
   exit 2
 fi
 

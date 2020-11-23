@@ -1,8 +1,11 @@
-# hassio-addons
-hass.io addons by Philipp Schmitt
+# home-assistant-addons
 
-Add to Home Assistant using the repository url:
-https://github.com/pschmitt/hassio-addons
+[![Build](https://github.com/pschmitt/home-assistant-addons/workflows/Build/badge.svg)](https://github.com/pschmitt/home-assistant-addons/actions?query=workflow%3ABuild)
+
+Home Assistant addons by Philipp Schmitt
+
+Add to Home Assistant using the repository url: 
+https://github.com/pschmitt/home-assistant-addons
 
 ## flicd
 
@@ -50,7 +53,3 @@ Pilight server.
 ## zabbix-agent
 
 Zabbix agent.
-
-## zhue
-
-React to Hue Dimmer Switch button presses.

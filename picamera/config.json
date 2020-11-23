@@ -1,18 +1,39 @@
 {
   "name": "picamera",
-  "image": "pschmitt/hassio-addon-{arch}-picamera",
-  "arch": ["armhf", "aarch64"],
-  "version": "1.3.2",
+  "image": "pschmitt/home-assistant-addon-{arch}-picamera",
+  "arch": [
+    "armhf",
+    "aarch64"
+  ],
+  "version": "1.4.0",
   "slug": "picamera",
   "description": "Expose your raspicam",
   "startup": "application",
   "boot": "auto",
-  "devices": ["/dev/vchiq:/dev/vchiq:rw"],
+  "devices": [
+    "/dev/vchiq:/dev/vchiq:rw"
+  ],
   "ports": {
     "8000/tcp": 8000
   },
   "host_network": "false",
   "webui": "http://[HOST]:[PORT:8000]",
-  "options": {"username": "pi", "password": "picamera", "resolution": "800x600", "framerate": "24", "hflip": false, "vflip": false, "rotation": "0"},
-  "schema": {"username": "str", "password": "str", "resolution": "str", "framerate": "int", "hflip": "bool", "vflip": "bool", "rotation": "match(0|90|180|270)"}
+  "options": {
+    "username": "pi",
+    "password": "picamera",
+    "resolution": "800x600",
+    "framerate": "24",
+    "hflip": false,
+    "vflip": false,
+    "rotation": "0"
+  },
+  "schema": {
+    "username": "str",
+    "password": "str",
+    "resolution": "str",
+    "framerate": "int",
+    "hflip": "bool",
+    "vflip": "bool",
+    "rotation": "match(0|90|180|270)"
+  }
 }

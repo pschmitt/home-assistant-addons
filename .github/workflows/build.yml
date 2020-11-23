@@ -1,0 +1,46 @@
+name: Build
+
+on:
+  push:
+  schedule:
+    - cron:  '20 3 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        addon:
+          - flicd
+          - picamera
+          - pilight
+          - zabbix-agent
+          - zabbix-agent2
+        arch:
+          - aarch64
+          - amd64
+          - armhf
+          - i386
+        exclude:
+          - addon: picamera
+            arch: amd64
+          - addon: picamera
+            arch: i386
+          - addon: pilight
+            arch: i386
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@master
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Docker login
+        uses: azure/docker-login@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build ${{ matrix.addon }} - ${{ matrix.arch }}
+        run: |
+          ./build.sh ${{ matrix.addon }} ${{ matrix.arch }}

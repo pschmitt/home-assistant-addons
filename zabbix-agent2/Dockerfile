@@ -9,10 +9,9 @@ LABEL maintainer "Philipp Schmitt <philipp@schmitt.co>"
 ENV LANG C.UTF-8
 
 # Install requirements for add-on
-RUN apt-get update && \
-    apt-get install -y jq && \
-    pip install zhue==0.9.5 && \
-    rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache jq zabbix-agent2 && \
+    addgroup -g 1003 docker && \
+    addgroup zabbix docker
 
 # Copy data for add-on
 COPY run.sh /

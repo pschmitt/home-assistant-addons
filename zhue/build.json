@@ -1,8 +1,0 @@
-{
-  "build_from": {
-    "armhf": "resin/raspberry-pi-python",
-    "aarch64": "resin/aarch64-python",
-    "i386": "resin/i386-python",
-    "amd64": "resin/amd64-python"
-  }
-}

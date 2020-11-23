@@ -1,7 +1,13 @@
 {
-  "image": "pschmitt/hassio-addon-{arch}-flicd",
+  "image": "pschmitt/home-assistant-addon-{arch}-flicd",
   "name": "flicd",
-  "version": "1.3",
+  "arch": [
+    "armhf",
+    "aarch64",
+    "i386",
+    "amd64"
+  ],
+  "version": "1.3.2",
   "slug": "flicd",
   "description": "React to flic button presses",
   "startup": "services",
