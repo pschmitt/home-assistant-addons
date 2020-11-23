@@ -13,7 +13,7 @@ RUN case $(arch) in \
         aarch64) export ARCH=aarch64 ;; \
     esac && \
     apt-get update && \
-    apt-get install -y git && \
+    apt-get install -y git jq && \
     git clone https://github.com/50ButtonsEach/fliclib-linux-hci /tmp/src && \
     cp /tmp/src/bin/${ARCH}/flicd /usr/bin/flicd && \
     chmod +x /usr/bin/flicd && \
@@ -23,8 +23,9 @@ RUN case $(arch) in \
     apt-get -y autoremove && \
     rm -rf /var/lib/apt/lists/*
 
+COPY run.sh /run.sh
+
 WORKDIR /data
 VOLUME ["/data"]
 EXPOSE 5551
-ENTRYPOINT ["/usr/bin/flicd"]
-CMD ["-f", "/data/flic-db", "-s", "0.0.0.0", "-p", "5551"]
+ENTRYPOINT ["/run.sh"]

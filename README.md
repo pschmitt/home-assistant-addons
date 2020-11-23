@@ -25,6 +25,14 @@ Flic server is now up and running!
 Initialization of Bluetooth controller done!
 ```
 
+By default, flicd is going to use `hci0` bluetooth controller. If you have multiple bluetooth controllers you can configure flicd to use another controller by specifying it in `hci_dev` configuration setting of the add-on.
+
+```
+{
+  "hci_dev": "hci1"
+}
+```
+
 After starting the flicd add-on, you might need to restart Home Assistant.
 Your flic buttons should be detected automatically if you keep pressing the button.
 
