@@ -1,0 +1,25 @@
+{
+  "name": "Avahi Reflector",
+  "version": "0.9",
+  "slug": "avahi_reflector",
+  "description": "avahi-daemon reflector",
+  "arch": [
+    "armhf",
+    "armv7",
+    "aarch64",
+    "amd64",
+    "i386"
+  ],
+  "image": "pschmitt/home-assistant-addon-{arch}-avahi-reflector",
+  "startup": "application",
+  "boot": "auto",
+  "options": {
+    "allow_interfaces": null
+  },
+  "schema": {
+    "allow_interfaces": [
+      "str?"
+    ]
+  },
+  "host_network": true
+}
