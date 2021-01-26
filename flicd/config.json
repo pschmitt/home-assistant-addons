@@ -7,7 +7,7 @@
     "i386",
     "amd64"
   ],
-  "version": "1.3.2",
+  "version": "2.0.3",
   "slug": "flicd",
   "description": "React to flic button presses",
   "startup": "services",
@@ -16,7 +16,13 @@
     "5551/tcp": 5551
   },
   "host_network": "true",
-  "privileged": ["NET_ADMIN"],
-  "options": {"hci_dev": "hci0"},
-  "schema": {"hci_dev": "str"}
+  "privileged": [
+    "NET_ADMIN"
+  ],
+  "options": {
+    "hci_dev": "hci0"
+  },
+  "schema": {
+    "hci_dev": "str"
+  }
 }
