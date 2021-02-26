@@ -13,7 +13,7 @@ TAILSCALED_FLAGS=(
 )
 
 config_get_value() {
-  jq --exit-status --raw ".[\"${1}\"]" "$CONFIG_PATH"
+  jq --exit-status -r ".[\"${1}\"]" "$CONFIG_PATH"
 }
 
 config_has_value() {
