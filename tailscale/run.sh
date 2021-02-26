@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bashio
 
 # Enable job control
-set -eum
+# set -eum
 
 CONFIG_PATH=/data/options.json
 
@@ -23,6 +23,8 @@ config_has_value() {
 config_value_is_true() {
   jq --exit-status ".[\"${1}\"] == true" "$CONFIG_PATH" >/dev/null
 }
+
+return
 
 # Parse config to construct `tailscale up` args
 if config_value_is_true 'force-reauth'
@@ -57,6 +59,12 @@ if config_has_value 'port'
 then
   TAILSCALED_FLAGS+=('-port' "$(config_get_value 'port')")
 fi
+
+# Debug
+{
+  echo "DEBUG - Tailscaled command: tailscaled ${TAILSCALED_FLAGS[*]}"
+  echo "DEBUG - Tailscale command: tailscale ${TAILSCALE_FLAGS[*]}"
+} >&2
 
 # Start tailscaled in the background
 tailscaled -cleanup "${TAILSCALED_FLAGS[@]}"
