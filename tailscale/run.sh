@@ -12,22 +12,35 @@ TAILSCALED_FLAGS=(
 )
 
 # Parse config to construct `tailscale up` args
-if bashio::config.has_value 'auth_key'
-then
-  TAILSCALE_FLAGS+=('-authkey' "$(bashio::config 'auth_key')")
-fi
-
 if bashio::config.has_value 'force_reauth' && \
   bashio::config.true 'force_reauth'
 then
   TAILSCALE_FLAGS+=('-force-reauth')
 fi
 
-if bashio::config.has_value 'hostname'
-then
-  TAILSCALE_FLAGS+=('-hostname' "$(bashio::config 'hostname')")
-fi
+TAILSCALE_CONFIG_OPTIONS=(
+  accept-dns
+  accept-routes
+  advertise-routes
+  advertise-tags
+  authkey
+  host-routes
+  hostname
+  login-server
+  netfilter-mode
+  shields-up
+  snat-subnet-routes
+)
 
+for it in "${TAILSCALE_CONFIG_OPTIONS[@]}"
+do
+  if bashio::config.has_value "$it"
+  then
+    TAILSCALE_FLAGS+=("-${it}" "$(bashio::config "$it")")
+  fi
+done
+
+# Same, but for tailscaled
 if bashio::config.has_value 'port'
 then
   TAILSCALED_FLAGS+=('-port' "$(bashio::config 'port')")

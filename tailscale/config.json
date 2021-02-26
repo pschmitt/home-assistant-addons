@@ -1,7 +1,7 @@
 {
     "image": "pschmitt/home-assistant-addon-{arch}-tailscale",
     "name": "Tailscale",
-    "version": "1.4.5",
+    "version": "1.4.5-1",
     "slug": "tailscale",
     "description": "Best VPN Service for Secure Networks",
     "url": "https://github.com/pschmitt/home-assistant-addons/tree/master/tailscale",
@@ -22,12 +22,28 @@
         "/dev/net/tun:/dev/net/tun:rwm"
     ],
     "options": {
-        "hostname": "homeassistant"
+        "accept-dns": true,
+        "accept-routes": false,
+        "host-routes": true,
+        "hostname": "homeassistant",
+        "login-server": "https://login.tailscale.com",
+        "netfilter-mode": "on",
+        "shields-up": false,
+        "snat-subnet-routes": true
     },
     "schema": {
-        "auth_key": "str",
-        "port": "int(1,65535)?",
+        "accept-dns": "bool",
+        "accept-routes": "bool",
+        "advertise-routes": "str?",
+        "advertise-tags": "str?",
+        "authkey": "str",
+        "force-reauth": "bool?",
+        "host-routes": "bool?",
         "hostname": "str?",
-        "force_reauth": "bool?"
+        "login-server": "str",
+        "netfilter-mode": "str?",
+        "port": "int(1,65535)?",
+        "shields-up": "bool",
+        "snat-subnet-routes": "bool"
     }
 }
