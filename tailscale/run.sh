@@ -3,7 +3,8 @@
 # Enable job control
 set -eum
 
-# CONFIG_PATH=/data/options.json
+CONFIG_PATH=/data/options.json
+
 TAILSCALE_SOCKET="/var/run/tailscale/tailscaled.sock"
 TAILSCALE_FLAGS=()
 TAILSCALED_FLAGS=(
@@ -11,9 +12,20 @@ TAILSCALED_FLAGS=(
   "-socket" "$TAILSCALE_SOCKET"
 )
 
+config_get_value() {
+  jq --exit-status --raw ".[\"${1}\"]" "$CONFIG_PATH"
+}
+
+config_has_value() {
+  config_get_value "$1" >/dev/null
+}
+
+config_value_is_true() {
+  jq --exit-status ".[\"${1}\"] == true" "$CONFIG_PATH" >/dev/null
+}
+
 # Parse config to construct `tailscale up` args
-if bashio::config.has_value 'force_reauth' && \
-  bashio::config.true 'force_reauth'
+if config_value_is_true 'force-reauth'
 then
   TAILSCALE_FLAGS+=('-force-reauth')
 fi
@@ -34,16 +46,16 @@ TAILSCALE_CONFIG_OPTIONS=(
 
 for it in "${TAILSCALE_CONFIG_OPTIONS[@]}"
 do
-  if bashio::config.has_value "$it"
+  if config_has_value "$it"
   then
-    TAILSCALE_FLAGS+=("-${it}" "$(bashio::config "$it")")
+    TAILSCALE_FLAGS+=("-${it}" "$(config_get_value "$it")")
   fi
 done
 
 # Same, but for tailscaled
-if bashio::config.has_value 'port'
+if config_has_value 'port'
 then
-  TAILSCALED_FLAGS+=('-port' "$(bashio::config 'port')")
+  TAILSCALED_FLAGS+=('-port' "$(config_get_value 'port')")
 fi
 
 # Start tailscaled in the background
