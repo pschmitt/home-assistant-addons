@@ -1,3 +1,8 @@
+# 1.4.5-3
+
+- More config parsing fixes
+- Log tailscale and tailscaled commands
+
 # 1.4.5-2
 
 - Fix config parsing
