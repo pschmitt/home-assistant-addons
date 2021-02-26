@@ -16,6 +16,7 @@ jobs:
           - flicd
           - picamera
           - pilight
+          - tailscale
           - zabbix-agent
           - zabbix-agent2
         arch:

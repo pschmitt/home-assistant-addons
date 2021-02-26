@@ -1,0 +1,33 @@
+{
+    "image": "pschmitt/home-assistant-addon-{arch}-tailscale",
+    "name": "Tailscale",
+    "version": "1.4.5",
+    "slug": "tailscale",
+    "description": "Best VPN Service for Secure Networks",
+    "url": "https://github.com/pschmitt/home-assistant-addons/tree/master/tailscale",
+    "arch": [
+        "aarch64",
+        "amd64",
+        "armhf",
+        "armv7",
+        "i386"
+    ],
+    "startup": "application",
+    "boot": "auto",
+    "host_network": true,
+    "privileged": [
+        "NET_ADMIN"
+    ],
+    "devices": [
+        "/dev/net/tun:/dev/net/tun:rwm"
+    ],
+    "options": {
+        "hostname": "homeassistant"
+    },
+    "schema": {
+        "auth_key": "str",
+        "port": "int(1,65535)?",
+        "hostname": "str?",
+        "force_reauth": "bool?"
+    }
+}
