@@ -24,8 +24,6 @@ config_value_is_true() {
   jq --exit-status ".[\"${1}\"] == true" "$CONFIG_PATH" >/dev/null
 }
 
-return
-
 # Parse config to construct `tailscale up` args
 if config_value_is_true 'force-reauth'
 then
