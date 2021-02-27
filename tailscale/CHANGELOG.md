@@ -1,3 +1,7 @@
+# 1.4.5-6
+
+- Add ip6tables to enable IPv6 tunnelling
+
 # 1.4.5-5
 
 - Fix container startup

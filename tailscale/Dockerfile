@@ -16,7 +16,7 @@ RUN chmod a+x /install.sh
 RUN /install.sh ${BUILD_ARCH} ${TAILSCALE_VERSION}
 
 # Install iptables dependency
-RUN apk add --no-cache iptables
+RUN apk add --no-cache iptables ip6tables
 
 COPY run.sh /run.sh
 RUN chmod a+x /run.sh
