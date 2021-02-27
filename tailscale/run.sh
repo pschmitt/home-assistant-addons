@@ -61,7 +61,7 @@ fi
 # Debug
 {
   echo "DEBUG - Tailscaled command: tailscaled ${TAILSCALED_FLAGS[*]}"
-  echo "DEBUG - Tailscale command: tailscale ${TAILSCALE_FLAGS[*]}"
+  echo "DEBUG - Tailscale command: tailscale -socket ${TAILSCALE_SOCKET} up ${TAILSCALE_FLAGS[*]}"
 } >&2
 
 # Start tailscaled in the background
