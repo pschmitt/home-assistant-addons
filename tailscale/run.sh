@@ -81,7 +81,8 @@ do
     fi
     exit "$?"
   else
-    i+=1
+    i=$(( i + 1 ))
+
     echo "tailscaled hasn't started yet. Sleeping 5s" >&2
     sleep 5
   fi
