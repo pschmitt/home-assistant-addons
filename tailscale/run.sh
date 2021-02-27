@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bashio
 
 # Enable job control
-# set -eum
+set -eum
 
 CONFIG_PATH=/data/options.json
 
