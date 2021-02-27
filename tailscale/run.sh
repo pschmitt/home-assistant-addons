@@ -13,11 +13,11 @@ TAILSCALED_FLAGS=(
 )
 
 config_get_value() {
-  jq --exit-status -r ".[\"${1}\"]" "$CONFIG_PATH"
+  jq -r ".[\"${1}\"]" "$CONFIG_PATH"
 }
 
 config_has_value() {
-  config_get_value "$1" >/dev/null
+  jq --exit-status ".[\"${1}\"] != null and .[\"${1}\"] != \"\"" "$CONFIG_PATH" >/dev/null
 }
 
 config_value_is_true() {
