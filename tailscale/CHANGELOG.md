@@ -1,5 +1,11 @@
 # 1.4.5-3
 
+- Yes, even more config parsing fixes
+- Re-enable job control
+- Remove debugging stuff
+
+# 1.4.5-3
+
 - More config parsing fixes
 - Log tailscale and tailscaled commands
 
