@@ -48,7 +48,7 @@ for it in "${TAILSCALE_CONFIG_OPTIONS[@]}"
 do
   if config_has_value "$it"
   then
-    TAILSCALE_FLAGS+=("-${it}" "$(config_get_value "$it")")
+    TAILSCALE_FLAGS+=("--${it}=$(config_get_value "$it")")
   fi
 done
 
