@@ -1,4 +1,10 @@
-# 1.4.5-3
+# 1.4.5-5
+
+- Fix container startup
+- Improved logging
+- Fix startup timeout
+
+# 1.4.5-4
 
 - Yes, even more config parsing fixes
 - Re-enable job control
