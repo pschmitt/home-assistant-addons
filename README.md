@@ -50,6 +50,10 @@ Expose your raspicam.
 
 Pilight server.
 
+## Tailscale
+
+[Tailscale](https://tailscale.com) VPN service. This addon was originally published [here](https://github.com/tsujamin/hass-addons/tree/main/tailscale).
+
 ## zabbix-agent
 
 Zabbix agent.
