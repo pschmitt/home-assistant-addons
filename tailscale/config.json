@@ -1,7 +1,7 @@
 {
     "image": "pschmitt/home-assistant-addon-{arch}-tailscale",
     "name": "Tailscale",
-    "version": "1.6.0",
+    "version": "1.6.0-1",
     "slug": "tailscale",
     "description": "Best VPN Service for Secure Networks",
     "url": "https://github.com/pschmitt/home-assistant-addons/tree/master/tailscale",
@@ -24,6 +24,7 @@
     "options": {
         "accept-dns": true,
         "accept-routes": false,
+        "advertise-exit-node": false,
         "host-routes": true,
         "hostname": "homeassistant",
         "login-server": "https://login.tailscale.com",
@@ -34,9 +35,11 @@
     "schema": {
         "accept-dns": "bool",
         "accept-routes": "bool",
+        "advertise-exit-node": "bool?",
         "advertise-routes": "str?",
         "advertise-tags": "str?",
         "authkey": "str",
+        "exit-node": "str?",
         "force-reauth": "bool?",
         "host-routes": "bool?",
         "hostname": "str?",

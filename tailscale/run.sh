@@ -33,9 +33,11 @@ fi
 TAILSCALE_CONFIG_OPTIONS=(
   accept-dns
   accept-routes
+  advertise-exit-node
   advertise-routes
   advertise-tags
   authkey
+  exit-node
   host-routes
   hostname
   login-server
