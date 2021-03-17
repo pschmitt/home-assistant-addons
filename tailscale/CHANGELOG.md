@@ -1,6 +1,6 @@
 # 1.6.0-1
 
-- Add support both exit nodes advertisement and setting an exit node
+- Add support for both exit nodes advertisement and setting an exit node
 
 # 1.6.0
 
