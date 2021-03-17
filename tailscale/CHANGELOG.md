@@ -1,3 +1,11 @@
+# 1.6.0-1
+
+- Add support both exit nodes advertisement and setting an exit node
+
+# 1.6.0
+
+- Update tailscale to 1.6.0
+
 # 1.4.5-6
 
 - Add ip6tables to enable IPv6 tunnelling
