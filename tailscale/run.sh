@@ -38,6 +38,7 @@ TAILSCALE_CONFIG_OPTIONS=(
   advertise-tags
   authkey
   exit-node
+  exit-node-allow-lan-access
   host-routes
   hostname
   login-server

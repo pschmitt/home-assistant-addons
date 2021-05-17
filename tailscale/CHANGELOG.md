@@ -1,3 +1,8 @@
+# 1.8.3
+
+- Update tailscale to 1.8.3
+- Add support for the --exit-node-allow-lan-access flag
+
 # 1.6.0-1
 
 - Add support for both exit nodes advertisement and setting an exit node

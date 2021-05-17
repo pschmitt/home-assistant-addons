@@ -40,6 +40,7 @@
         "advertise-tags": "str?",
         "authkey": "str",
         "exit-node": "str?",
+        "exit-node-allow-lan-access": "bool?",
         "force-reauth": "bool?",
         "host-routes": "bool?",
         "hostname": "str?",
