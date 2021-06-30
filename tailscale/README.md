@@ -40,3 +40,18 @@ docker run -it --rm \
   -e ADVERTISE_ROUTES=192.168.1.0/24 \
   pschmitt/home-assistant-addon-amd64-tailscale
 ```
+
+If you prefer to not use env args you can use the following form:
+
+```shell
+docker run -it --rm \
+  --name tailscale \
+  --hostname docker-test \
+  --net=host \
+  --cap-add=NET_ADMIN \
+  --device /dev/net/tun \
+  -v $PWD/data:/data:rw \
+  pschmitt/home-assistant-addon-amd64-tailscale \
+    --authkey=tskey-XXXXXXXX \
+    --advertise-routes=192.168.1.0/24
+```
