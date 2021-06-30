@@ -35,6 +35,7 @@ docker run -it --rm \
   --net=host \
   --cap-add=NET_ADMIN \
   --device /dev/net/tun \
+  -v $PWD/data:/data:rw \
   -e AUTHKEY=tskey-XXXXXXXX \
   -e ADVERTISE_ROUTES=192.168.1.0/24 \
   pschmitt/home-assistant-addon-amd64-tailscale
