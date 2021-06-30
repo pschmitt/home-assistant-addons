@@ -2,7 +2,7 @@
 
 set -eu
 
-echo "ARGS: $*"
+echo "$0 args: $*" >&2
 
 BUILD_ARCH="$1"
 TAILSCALE_VERSION="$2"
@@ -25,8 +25,9 @@ case "$BUILD_ARCH" in
     ;;
 esac
 
-wget "https://pkgs.tailscale.com/stable/tailscale_${TAILSCALE_VERSION}_${TAILSCALE_ARCH}.tgz" -O - | \
-  tar xzf -
+URL="https://pkgs.tailscale.com/stable/tailscale_${TAILSCALE_VERSION}_${TAILSCALE_ARCH}.tgz"
+
+wget "$URL" -O - | tar xzf -
 mv "tailscale_${TAILSCALE_VERSION}_${TAILSCALE_ARCH}"/tailscale* /bin
 rm -rf "tailscale_${TAILSCALE_VERSION}_${TAILSCALE_ARCH}"
 
