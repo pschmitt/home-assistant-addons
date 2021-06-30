@@ -12,15 +12,54 @@ TAILSCALED_FLAGS=(
   "-socket" "$TAILSCALE_SOCKET"
 )
 
+env_get_value() {
+  local env_var
+  # Convert $1 to env var name. Example: hello-world -> HELLO_WORLD
+  env_var="$(tr '[:lower:]' '[:upper:]' <<< "${1//-/_}")"
+  # Return env var value
+  eval echo "\${${env_var}}"
+}
+
 config_get_value() {
+  local env_val
+  env_val="$(env_get_value "$1")"
+
+  if [[ -n "${env_val}" ]]
+  then
+    echo "$env_val"
+    return
+  fi
+
   jq -r ".[\"${1}\"]" "$CONFIG_PATH"
 }
 
 config_has_value() {
-  jq --exit-status ".[\"${1}\"] != null and .[\"${1}\"] != \"\"" "$CONFIG_PATH" >/dev/null
+  local env_val
+  env_val="$(env_get_value "$1")"
+
+  if [[ -n "${env_val}" ]]
+  then
+    return
+  fi
+
+  jq --exit-status \
+    ".[\"${1}\"] != null and .[\"${1}\"] != \"\"" "$CONFIG_PATH" >/dev/null
 }
 
 config_value_is_true() {
+  local env_val
+  env_val="$(env_get_value "$1")"
+
+  if [[ -n "${env_val}" ]]
+  then
+    if [[ "${env_val}" == "true" ]]
+    then
+      return
+    else
+      return 1
+    fi
+  fi
+
   jq --exit-status ".[\"${1}\"] == true" "$CONFIG_PATH" >/dev/null
 }
 
