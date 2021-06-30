@@ -63,6 +63,11 @@ config_value_is_true() {
   jq --exit-status ".[\"${1}\"] == true" "$CONFIG_PATH" >/dev/null
 }
 
+setup_ip_forwarding() {
+  sysctl net.ipv4.ip_forward=1
+  sysctl net.ipv6.conf.all.forwarding=1
+}
+
 # Parse config to construct `tailscale up` args
 if config_value_is_true 'force-reauth'
 then
@@ -105,6 +110,12 @@ fi
   echo "DEBUG - Tailscaled command: tailscaled ${TAILSCALED_FLAGS[*]}"
   echo "DEBUG - Tailscale command: tailscale -socket ${TAILSCALE_SOCKET} up ${TAILSCALE_FLAGS[*]}"
 } >&2
+
+# Try to set up IP forwarding if required
+if grep -qE "advertise-exit-node|advertise-routes" "${TAILSCALE_FLAGS[@]}"
+then
+  setup_ip_forwarding
+fi
 
 # Start tailscaled in the background
 tailscaled -cleanup "${TAILSCALED_FLAGS[@]}"
