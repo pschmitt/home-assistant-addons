@@ -1,3 +1,9 @@
+# 1.10.0-7
+
+- Fix tailscale hostname on Home Assistant OS
+- Prefer the config file for hostname values
+- Log a warning if no config file found
+
 # 1.10.0-6
 
 - Fix startup on Home Assistant OS
