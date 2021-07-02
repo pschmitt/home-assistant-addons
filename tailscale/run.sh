@@ -12,12 +12,19 @@ TAILSCALED_FLAGS=(
   "-socket" "$TAILSCALE_SOCKET"
 )
 
+# DIRTYFIX: Remove /run.sh from tailscale flags if present
+# This seems to only be present if run by Home Assistant OS
+if [[ ${TAILSCALE_FLAGS[0]} == "/run.sh" ]]
+then
+  TAILSCALE_FLAGS=("${TAILSCALE_FLAGS[@]:1}")
+fi
+
 env_get_value() {
   local env_var
   # Convert $1 to env var name. Example: hello-world -> HELLO_WORLD
   env_var="$(tr '[:lower:]' '[:upper:]' <<< "${1//-/_}")"
   # Return env var value
-  eval echo "\${${env_var}}"
+  eval echo "\${${env_var}}" 2>/dev/null
 }
 
 config_get_value() {
