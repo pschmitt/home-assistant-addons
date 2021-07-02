@@ -1,3 +1,7 @@
+# 1.10.0-6
+
+- Fix startup on Home Assistant OS
+
 # 1.10.0-5
 
 - Fix detection of whether IP forwarding is required
