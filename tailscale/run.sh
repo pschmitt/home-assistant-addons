@@ -127,7 +127,7 @@ fi
 } >&2
 
 # Try to set up IP forwarding if required
-if grep -qE "advertise-exit-node|advertise-routes" -- "${TAILSCALE_FLAGS[@]}"
+if grep -qE "advertise-exit-node|advertise-routes" <<< "${TAILSCALE_FLAGS[@]}"
 then
   setup_ip_forwarding
 fi
