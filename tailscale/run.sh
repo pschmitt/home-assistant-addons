@@ -20,16 +20,16 @@ then
 fi
 
 config_file_get_value() {
-  jq -r ".[\"${1}\"]" "$CONFIG_PATH"
+  jq -r ".[\"${1}\"]" "$CONFIG_PATH" 2>/dev/null
 }
 
 config_file_has_value() {
   jq --exit-status \
-    ".[\"${1}\"] != null and .[\"${1}\"] != \"\"" "$CONFIG_PATH" >/dev/null
+    ".[\"${1}\"] != null and .[\"${1}\"] != \"\"" "$CONFIG_PATH" >/dev/null 2>&1
 }
 
 config_file_value_is_true() {
-  jq --exit-status ".[\"${1}\"] == true" "$CONFIG_PATH" >/dev/null
+  jq --exit-status ".[\"${1}\"] == true" "$CONFIG_PATH" >/dev/null 2>&1
 }
 
 env_get_value() {
