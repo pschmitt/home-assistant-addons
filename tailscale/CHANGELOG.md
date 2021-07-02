@@ -1,3 +1,7 @@
+# 1.10.0-1
+
+- Always run tailscale up --reset
+
 # 1.10.0
 
 - Update tailscale to 1.10.0
