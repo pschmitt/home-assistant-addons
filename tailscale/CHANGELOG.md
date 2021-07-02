@@ -1,3 +1,7 @@
+# 1.10.0-5
+
+- Fix detection of whether IP forwarding is required
+
 # 1.10.0-4
 
 - Reduce verbosity and don't error out as easily when something fails
