@@ -64,10 +64,23 @@ config_value_is_true() {
 }
 
 setup_ip_forwarding() {
-  if ! sysctl net.ipv4.ip_forward=1 net.ipv6.conf.all.forwarding=1
-  then
-    echo "Failed to setup IP forwarding" >&2
-  fi
+  local key
+
+  echo "INFO: Attempt to setup IP forwarding" >&2
+
+  for key in net.ipv4.ip_forward net.ipv6.conf.all.forwarding
+  do
+    if [[ "$(sysctl -n "$key")" == "1" ]]
+    then
+      echo "INFO: $key is already set to 1" >&2
+      continue
+    fi
+
+    if ! sysctl -q "${key}=1"
+    then
+      echo "WARNING: Failed to set ${key}=1" >&2
+    fi
+  done
 }
 
 # Parse config to construct `tailscale up` args
@@ -109,8 +122,8 @@ fi
 
 # Debug
 {
-  echo "DEBUG - Tailscaled command: tailscaled ${TAILSCALED_FLAGS[*]}"
-  echo "DEBUG - Tailscale command: tailscale -socket ${TAILSCALE_SOCKET} up ${TAILSCALE_FLAGS[*]}"
+  echo "DEBUG: Tailscaled command: tailscaled ${TAILSCALED_FLAGS[*]}"
+  echo "DEBUG: Tailscale command:  tailscale -socket ${TAILSCALE_SOCKET} up ${TAILSCALE_FLAGS[*]}"
 } >&2
 
 # Try to set up IP forwarding if required
