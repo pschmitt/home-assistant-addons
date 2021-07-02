@@ -1,3 +1,7 @@
+# 1.10.0-9
+
+- Fix tailscale up args
+
 # 1.10.0-8
 
 - Fix startup (again, yes. Sorry!)
