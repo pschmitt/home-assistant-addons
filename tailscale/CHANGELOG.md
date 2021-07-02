@@ -1,3 +1,7 @@
+# 1.10.0-4
+
+- Reduce verbosity and don't error out as easily when something fails
+
 # 1.10.0-3
 
 - Don't error out if IP forwarding setup fails
