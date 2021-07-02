@@ -1,3 +1,7 @@
+# 1.10.0-3
+
+- Don't error out if IP forwarding setup fails
+
 # 1.10.0-2
 
 - Fix grepping for advertisements (sysctl IP forwarding setup)
