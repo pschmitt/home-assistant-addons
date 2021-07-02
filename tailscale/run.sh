@@ -6,18 +6,22 @@ set -m
 CONFIG_PATH=/data/options.json
 
 TAILSCALE_SOCKET="/var/run/tailscale/tailscaled.sock"
-TAILSCALE_FLAGS=(--reset "$@")
+TAILSCALE_FLAGS=(--reset)
 TAILSCALED_FLAGS=(
   "-state" "/data/tailscaled.state"
   "-socket" "$TAILSCALE_SOCKET"
 )
 
+# Feed CLI args to tailscale up
 # DIRTYFIX: Remove /run.sh from tailscale flags if present
 # This seems to only be present if run by Home Assistant OS
-if [[ "${TAILSCALE_FLAGS[0]}" == "/run.sh" ]]
-then
-  TAILSCALE_FLAGS=("${TAILSCALE_FLAGS[@]:1}")
-fi
+for arg in "$@"
+do
+  if [[ "${arg}" != "/run.sh" ]] && [[ "${arg}" != "$0" ]]
+  then
+    TAILSCALE_FLAGS+=("$arg")
+  fi
+done
 
 config_file_get_value() {
   jq -r ".[\"${1}\"]" "$CONFIG_PATH" 2>/dev/null
