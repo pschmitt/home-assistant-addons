@@ -64,8 +64,10 @@ config_value_is_true() {
 }
 
 setup_ip_forwarding() {
-  sysctl net.ipv4.ip_forward=1
-  sysctl net.ipv6.conf.all.forwarding=1
+  if ! sysctl net.ipv4.ip_forward=1 net.ipv6.conf.all.forwarding=1
+  then
+    echo "Failed to setup IP forwarding" >&2
+  fi
 }
 
 # Parse config to construct `tailscale up` args
