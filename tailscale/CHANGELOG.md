@@ -1,3 +1,7 @@
+# 1.10.0-2
+
+- Fix grepping for advertisements (sysctl IP forwarding setup)
+
 # 1.10.0-1
 
 - Always run tailscale up --reset
