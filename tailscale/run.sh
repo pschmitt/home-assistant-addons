@@ -14,10 +14,23 @@ TAILSCALED_FLAGS=(
 
 # DIRTYFIX: Remove /run.sh from tailscale flags if present
 # This seems to only be present if run by Home Assistant OS
-if [[ ${TAILSCALE_FLAGS[0]} == "/run.sh" ]]
+if [[ "${TAILSCALE_FLAGS[0]}" == "/run.sh" ]]
 then
   TAILSCALE_FLAGS=("${TAILSCALE_FLAGS[@]:1}")
 fi
+
+config_file_get_value() {
+  jq -r ".[\"${1}\"]" "$CONFIG_PATH"
+}
+
+config_file_has_value() {
+  jq --exit-status \
+    ".[\"${1}\"] != null and .[\"${1}\"] != \"\"" "$CONFIG_PATH" >/dev/null
+}
+
+config_file_value_is_true() {
+  jq --exit-status ".[\"${1}\"] == true" "$CONFIG_PATH" >/dev/null
+}
 
 env_get_value() {
   local env_var
@@ -27,7 +40,7 @@ env_get_value() {
   eval echo "\${${env_var}}" 2>/dev/null
 }
 
-config_get_value() {
+config_env_get_value() {
   local env_val
   env_val="$(env_get_value "$1")"
 
@@ -37,43 +50,86 @@ config_get_value() {
     return
   fi
 
-  jq -r ".[\"${1}\"]" "$CONFIG_PATH"
+  return 1
 }
 
-config_has_value() {
+config_env_has_value() {
+  config_env_get_value "$1" >/dev/null 2>/dev/null
+}
+
+config_env_value_is_true() {
   local env_val
   env_val="$(env_get_value "$1")"
 
-  if [[ -n "${env_val}" ]]
+  if [[ "${env_val}" == "true" ]]
   then
     return
   fi
 
-  jq --exit-status \
-    ".[\"${1}\"] != null and .[\"${1}\"] != \"\"" "$CONFIG_PATH" >/dev/null
+  return 1
+}
+
+config_get_value() {
+  local source="${2:-auto}"
+
+  case "${source}" in
+    file)
+      config_file_get_value "$1"
+      ;;
+    env)
+      config_env_get_value "$1"
+      ;;
+    alt)
+      config_file_get_value "$1" || config_env_get_value "$1"
+      ;;
+    *)
+      config_env_get_value "$1" || config_file_get_value "$1"
+      ;;
+  esac
+}
+
+config_has_value() {
+  local source="${2:-auto}"
+
+  case "${source}" in
+    file)
+      config_file_has_value "$1"
+      ;;
+    env)
+      config_env_has_value "$1"
+      ;;
+    alt)
+      config_file_has_value "$1" || config_env_has_value "$1"
+      ;;
+    *)
+      config_env_has_value "$1" || config_file_has_value "$1"
+      ;;
+  esac
 }
 
 config_value_is_true() {
-  local env_val
-  env_val="$(env_get_value "$1")"
+  local source="${2:-auto}"
 
-  if [[ -n "${env_val}" ]]
-  then
-    if [[ "${env_val}" == "true" ]]
-    then
-      return
-    else
-      return 1
-    fi
-  fi
-
-  jq --exit-status ".[\"${1}\"] == true" "$CONFIG_PATH" >/dev/null
+  case "${source}" in
+    file)
+      config_file_value_is_true "$1"
+      ;;
+    env)
+      config_env_value_is_true "$1"
+      ;;
+    alt)
+      config_file_value_is_true "$1" || config_env_value_is_true "$1"
+      ;;
+    *)
+      config_env_value_is_true "$1" || config_file_value_is_true "$1"
+      ;;
+  esac
 }
 
 setup_ip_forwarding() {
-  local key
-
   echo "INFO: Attempt to setup IP forwarding" >&2
+
+  local key
 
   for key in net.ipv4.ip_forward net.ipv6.conf.all.forwarding
   do
@@ -113,11 +169,28 @@ TAILSCALE_CONFIG_OPTIONS=(
   snat-subnet-routes
 )
 
-for it in "${TAILSCALE_CONFIG_OPTIONS[@]}"
+for key in "${TAILSCALE_CONFIG_OPTIONS[@]}"
 do
-  if config_has_value "$it"
+  src="auto"
+  val=""
+
+  # For hostname, prefer the value set in the config file, rather than the env
+  # var $HOSTNAME
+  # -> only use $HOSTNAME if no hostname set in config file
+  case "$key" in
+    hostname)
+      src=alt
+      ;;
+  esac
+
+  if config_has_value "$key" "$src"
   then
-    TAILSCALE_FLAGS+=("--${it}=$(config_get_value "$it")")
+    val="$(config_get_value "$key" "$src")"
+  fi
+
+  if [[ -n "$val" ]]
+  then
+    TAILSCALE_FLAGS+=("--${key}=${val}")
   fi
 done
 
