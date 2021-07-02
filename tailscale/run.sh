@@ -128,7 +128,7 @@ do
   if [[ -e "$TAILSCALE_SOCKET" ]]
   then
     # bring up the tunnel and fg tailscaled
-    if tailscale -socket "$TAILSCALE_SOCKET" up "${TAILSCALE_FLAGS[@]}"
+    if tailscale -socket "$TAILSCALE_SOCKET" up --reset "${TAILSCALE_FLAGS[@]}"
     then
       fg
     fi
