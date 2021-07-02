@@ -6,7 +6,7 @@ set -m
 CONFIG_PATH=/data/options.json
 
 TAILSCALE_SOCKET="/var/run/tailscale/tailscaled.sock"
-TAILSCALE_FLAGS=("$@")
+TAILSCALE_FLAGS=(--reset "$@")
 TAILSCALED_FLAGS=(
   "-state" "/data/tailscaled.state"
   "-socket" "$TAILSCALE_SOCKET"
@@ -146,6 +146,12 @@ setup_ip_forwarding() {
   done
 }
 
+# Check if a config file is present
+if [[ ! -r "$CONFIG_PATH" ]]
+then
+  echo "WARNING: No config file present at $CONFIG_PATH" >&2
+fi
+
 # Parse config to construct `tailscale up` args
 if config_value_is_true 'force-reauth'
 then
@@ -223,7 +229,7 @@ do
   if [[ -e "$TAILSCALE_SOCKET" ]]
   then
     # bring up the tunnel and fg tailscaled
-    if tailscale -socket "$TAILSCALE_SOCKET" up --reset "${TAILSCALE_FLAGS[@]}"
+    if tailscale -socket "$TAILSCALE_SOCKET" up "${TAILSCALE_FLAGS[@]}"
     then
       fg
     fi
