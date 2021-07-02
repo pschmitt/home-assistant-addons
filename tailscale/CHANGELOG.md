@@ -1,3 +1,7 @@
+# 1.10.0-8
+
+- Fix startup (again, yes. Sorry!)
+
 # 1.10.0-7
 
 - Fix tailscale hostname on Home Assistant OS
