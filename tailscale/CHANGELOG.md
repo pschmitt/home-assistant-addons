@@ -1,3 +1,7 @@
+# 1.10.2
+
+- Update tailscale to 1.10.2
+
 # 1.10.0-9
 
 - Fix tailscale up args
