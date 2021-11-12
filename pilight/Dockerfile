@@ -8,7 +8,7 @@ LABEL maintainer "Philipp Schmitt <philipp@schmitt.co>"
 
 RUN apt-get update && \
     apt-get install -y apt-transport-https wget gnupg jq && \
-    echo "deb https://apt.pilight.org/ stable main" > /etc/apt/sources.list.d/pilight.list && \
+    echo "deb [trusted=yes] https://apt.pilight.org/ stable main" > /etc/apt/sources.list.d/pilight.list && \
     wget -O - https://apt.pilight.org/pilight.key | apt-key add - && \
     apt-get update && \
     if [ "$(uname -m)" = armv7l ]; \
