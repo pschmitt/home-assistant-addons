@@ -11,7 +11,7 @@
   "startup": "application",
   "boot": "auto",
   "devices": [
-    "/dev/vchiq:/dev/vchiq:rw"
+    "/dev/vchiq"
   ],
   "ports": {
     "8000/tcp": 8000

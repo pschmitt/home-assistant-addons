@@ -13,7 +13,7 @@
   "boot": "auto",
   "apparmor": "false",
   "devices": [
-    "/dev/mem:/dev/mem:rw"
+    "/dev/mem"
   ],
   "privileged": [
     "SYS_RAWIO"
