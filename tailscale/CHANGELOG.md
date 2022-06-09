@@ -1,3 +1,7 @@
+# 1.26.0-2
+
+- Fix container entrypoint
+
 # 1.26.0-1
 
 - Fix devices: config format

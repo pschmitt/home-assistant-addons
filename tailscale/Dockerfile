@@ -20,4 +20,4 @@ RUN apk add --no-cache iptables ip6tables
 
 COPY run.sh /run.sh
 RUN chmod a+x /run.sh
-ENTRYPOINT ["/init", "/run.sh"]
+ENTRYPOINT ["/run.sh"]
