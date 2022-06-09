@@ -1,3 +1,7 @@
+# 1.26.0-1
+
+- Fix devices: config format
+
 # 1.26.0
 
 - Update tailscale to 1.26.0

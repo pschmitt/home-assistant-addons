@@ -1,53 +1,53 @@
 {
-    "image": "pschmitt/home-assistant-addon-{arch}-tailscale",
-    "name": "Tailscale",
-    "version": "1.26.0",
-    "slug": "tailscale",
-    "description": "Best VPN Service for Secure Networks",
-    "url": "https://github.com/pschmitt/home-assistant-addons/tree/master/tailscale",
-    "arch": [
-        "aarch64",
-        "amd64",
-        "armhf",
-        "armv7",
-        "i386"
-    ],
-    "startup": "system",
-    "boot": "auto",
-    "host_network": true,
-    "privileged": [
-        "NET_ADMIN"
-    ],
-    "devices": [
-        "/dev/net/tun:/dev/net/tun:rwm"
-    ],
-    "options": {
-        "accept-dns": true,
-        "accept-routes": false,
-        "advertise-exit-node": false,
-        "host-routes": true,
-        "hostname": "homeassistant",
-        "login-server": "https://login.tailscale.com",
-        "netfilter-mode": "on",
-        "shields-up": false,
-        "snat-subnet-routes": true
-    },
-    "schema": {
-        "accept-dns": "bool",
-        "accept-routes": "bool",
-        "advertise-exit-node": "bool?",
-        "advertise-routes": "str?",
-        "advertise-tags": "str?",
-        "authkey": "str",
-        "exit-node": "str?",
-        "exit-node-allow-lan-access": "bool?",
-        "force-reauth": "bool?",
-        "host-routes": "bool?",
-        "hostname": "str?",
-        "login-server": "str",
-        "netfilter-mode": "str?",
-        "port": "int(1,65535)?",
-        "shields-up": "bool",
-        "snat-subnet-routes": "bool"
-    }
+  "image": "pschmitt/home-assistant-addon-{arch}-tailscale",
+  "name": "Tailscale",
+  "version": "1.26.0-1",
+  "slug": "tailscale",
+  "description": "Best VPN Service for Secure Networks",
+  "url": "https://github.com/pschmitt/home-assistant-addons/tree/master/tailscale",
+  "arch": [
+    "aarch64",
+    "amd64",
+    "armhf",
+    "armv7",
+    "i386"
+  ],
+  "startup": "system",
+  "boot": "auto",
+  "host_network": true,
+  "privileged": [
+    "NET_ADMIN"
+  ],
+  "devices": [
+    "/dev/net/tun"
+  ],
+  "options": {
+    "accept-dns": true,
+    "accept-routes": false,
+    "advertise-exit-node": false,
+    "host-routes": true,
+    "hostname": "homeassistant",
+    "login-server": "https://login.tailscale.com",
+    "netfilter-mode": "on",
+    "shields-up": false,
+    "snat-subnet-routes": true
+  },
+  "schema": {
+    "accept-dns": "bool",
+    "accept-routes": "bool",
+    "advertise-exit-node": "bool?",
+    "advertise-routes": "str?",
+    "advertise-tags": "str?",
+    "authkey": "str",
+    "exit-node": "str?",
+    "exit-node-allow-lan-access": "bool?",
+    "force-reauth": "bool?",
+    "host-routes": "bool?",
+    "hostname": "str?",
+    "login-server": "str",
+    "netfilter-mode": "str?",
+    "port": "int(1,65535)?",
+    "shields-up": "bool",
+    "snat-subnet-routes": "bool"
+  }
 }
