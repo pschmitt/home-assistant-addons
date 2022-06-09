@@ -1,3 +1,7 @@
+# 1.26.0-3
+
+- Rebase on alpine (alpine:latest)
+
 # 1.26.0-2
 
 - Fix container entrypoint
