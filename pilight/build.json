@@ -1,8 +1,0 @@
-{
-  "build_from": {
-    "armhf": "balenalib/armv7hf-debian:buster-run",
-    "aarch64": "balenalib/aarch64-debian:stretch-run",
-    "i386": "balenalib/i386-debian:run",
-    "amd64": "balenalib/amd64-debian:run"
-  }
-}
