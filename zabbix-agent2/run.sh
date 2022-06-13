@@ -1,4 +1,5 @@
 #!/usr/bin/env ash
+# shellcheck shell=dash
 
 # Extract config data
 CONFIG_PATH=/data/options.json
