@@ -1,3 +1,7 @@
+# 1.30.2
+
+- Update tailscale to 1.30.2
+
 # 1.26.0-3
 
 - Rebase on alpine (alpine:latest)
