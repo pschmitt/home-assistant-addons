@@ -39,6 +39,6 @@ EOF
   mv "$TMPFILE" ./CHANGELOG.md
 
   git status
-  git add build.json config.json CHANGELOG.md 
+  git add build.json config.json CHANGELOG.md
   git diff
 fi
