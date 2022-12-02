@@ -40,5 +40,5 @@ EOF
 
   git status
   git add build.json config.json CHANGELOG.md
-  git diff
+  git diff --cached
 fi
