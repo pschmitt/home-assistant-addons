@@ -4,11 +4,16 @@ current_version() {
   jq -er .version ./config.json
 }
 
+latest_version() {
+  curl -fsSL "https://api.github.com/repos/tailscale/tailscale/releases/latest" | \
+    jq -er '.tag_name | sub("^v"; "")'
+}
+
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
 then
   set -eo pipefail
 
-  VERSION="$1"
+  VERSION="${1:-$(latest_version)}"
 
   if [[ -z "$VERSION" ]]
   then
@@ -18,7 +23,14 @@ then
 
   cd "$(cd "$(dirname "$0")" >/dev/null 2>&1; pwd -P)" || exit 9
 
-  # CURRENT_VERSION="$(current_version)"
+  CURRENT_VERSION="$(current_version)"
+
+  if [[ "$CURRENT_VERSION" == "$VERSION" ]]
+  then
+    echo "Version is already $VERSION" >&2
+    exit 1
+  fi
+
   TMPFILE="$(mktemp)"
 
   # patch build.json
