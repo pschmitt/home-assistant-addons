@@ -1,6 +1,6 @@
 {
   "name": "keepalived",
-  "version": "1.1",
+  "version": "1.11",
   "slug": "keepalived",
   "description": "Keepalived",
   "arch": [
@@ -11,6 +11,9 @@
   "startup": "system",
   "boot": "auto",
   "host_network": true,
+  "privileged": [
+    "NET_ADMIN"
+  ],
   "image": "pschmitt/home-assistant-addon-{arch}-keepalived",
   "options": {
     "interface": "eth0",
