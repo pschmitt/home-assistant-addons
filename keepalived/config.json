@@ -12,7 +12,9 @@
   "boot": "auto",
   "host_network": true,
   "privileged": [
-    "NET_ADMIN"
+    "NET_ADMIN",
+    "NET_BROADCAST",
+    "NET_RAW"
   ],
   "image": "pschmitt/home-assistant-addon-{arch}-keepalived",
   "options": {
