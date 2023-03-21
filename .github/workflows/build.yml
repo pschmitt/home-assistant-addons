@@ -27,6 +27,10 @@ jobs:
           - armhf
           - i386
         exclude:
+          - addon: keepalived
+            arch: i386
+          - addon: keepalived
+            arch: armhf
           - addon: picamera
             arch: amd64
           - addon: picamera
