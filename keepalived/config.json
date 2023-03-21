@@ -1,6 +1,6 @@
 {
   "name": "keepalived",
-  "version": "1.11",
+  "version": "1.12",
   "slug": "keepalived",
   "description": "Keepalived",
   "arch": [
