@@ -1,6 +1,8 @@
 #!/usr/bin/env ash
 # shellcheck shell=dash
 
+set -x
+
 config_get() {
   local config=/data/options.json
   jq --raw-output ".${1}" "$config"
