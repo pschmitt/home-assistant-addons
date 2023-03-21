@@ -1,0 +1,31 @@
+{
+  "name": "keepalived",
+  "version": "1.0",
+  "slug": "keepalived",
+  "description": "Keepalived",
+  "arch": [
+    "armv7",
+    "aarch64",
+    "amd64",
+  ],
+  "startup": "system",
+  "boot": "auto",
+  "host_network": true,
+  "image": "pschmitt/home-assistant-addon-{arch}-keepalived",
+  "options": {
+    "interface": "eth0",
+    "password": "changeme",
+    "router_id": "51",
+    "virtual_ips": "192.168.1.231",
+    "args": "--log-detail --dump-conf",
+    "state": "BACKUP"
+  },
+  "schema": {
+    "interface": "str",
+    "password": "str",
+    "router_id": "str",
+    "virtual_ips": "str",
+    "args": "str",
+    "state": "str"
+  }
+}
