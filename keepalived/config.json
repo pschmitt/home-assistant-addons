@@ -4,9 +4,9 @@
   "slug": "keepalived",
   "description": "Keepalived",
   "arch": [
-    "armv7",
     "aarch64",
     "amd64",
+    "armv7"
   ],
   "startup": "system",
   "boot": "auto",
