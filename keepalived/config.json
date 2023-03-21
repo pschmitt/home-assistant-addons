@@ -1,6 +1,6 @@
 {
   "name": "keepalived",
-  "version": "1.13",
+  "version": "1.14",
   "slug": "keepalived",
   "description": "Keepalived",
   "arch": [
@@ -19,6 +19,7 @@
     "interface": "eth0",
     "password": "changeme",
     "router_id": "51",
+    "priority": "150",
     "virtual_ips": "192.168.1.231",
     "args": "--log-detail --dump-conf",
     "state": "BACKUP"
@@ -27,6 +28,7 @@
     "interface": "str",
     "password": "str",
     "router_id": "str",
+    "priority": "str",
     "virtual_ips": "str",
     "args": "str",
     "state": "str"
