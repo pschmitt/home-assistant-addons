@@ -15,6 +15,7 @@ jobs:
         addon:
           - avahi-reflector
           - flicd
+          - keepalived
           - picamera
           - pilight
           - tailscale
