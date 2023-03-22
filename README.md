@@ -42,6 +42,15 @@ For more information, check the Home Assistant Forum at https://community.home-a
 
 Check the [flic component page at home-assistant.io](https://www.home-assistant.io/components/binary_sensor.flic/).
 
+## avahi-reflector
+
+avahi-reflector to bridge mDNS.
+
+## keepalived
+
+[osixia/docker-keepalived](https://github.com/osixia/docker-keepalived) packaged
+as a Home Assistant addon.
+
 ## picamera
 
 Expose your raspicam.
