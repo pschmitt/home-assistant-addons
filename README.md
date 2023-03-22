@@ -48,12 +48,13 @@ Expose your raspicam.
 
 ## pilight
 
-Pilight server.
+**⚠️ DEPRECATED** Please use [another addon](https://github.com/philipp-luettecke/hassio-addons/) (or fork)
 
 ## Tailscale
 
 [Tailscale](https://tailscale.com) VPN service. This addon was originally published [here](https://github.com/tsujamin/hass-addons/tree/main/tailscale).
 
-## zabbix-agent
+## zabbix-agent{,2}
 
-Zabbix agent.
+Zabbix agent{,2}.
+
