@@ -48,4 +48,4 @@ jobs:
 
       - name: Build ${{ matrix.addon }} - ${{ matrix.arch }}
         run: |
-          bash -x ./build.sh ${{ matrix.addon }} ${{ matrix.arch }}
+          ./build.sh ${{ matrix.addon }} ${{ matrix.arch }}
