@@ -43,7 +43,7 @@ build_addon() {
     -v '/var/run/docker.sock:/var/run/docker.sock' \
     -v "${DOCKER_CONFIG:-~/.docker}:/root/.docker" \
     -v "${PWD}/${1}:/data" \
-    homeassistant/amd64-builder:latest \
+    ghcr.io/home-assistant/amd64-builder:latest \
     --addon -t /data"
 
   if [[ -n "$2" && "$2" != "all" ]]
