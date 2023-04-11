@@ -1,6 +1,8 @@
 #!/usr/bin/env ash
 # shellcheck shell=dash
 
+#!/bin/bash
+
 set -x
 
 config_get() {
