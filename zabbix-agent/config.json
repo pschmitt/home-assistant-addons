@@ -23,10 +23,12 @@
   "image": "pschmitt/home-assistant-addon-{arch}-zabbix-agent",
   "options": {
     "server": "zabbix-server.local",
+    "serveractive": "zabbix-server.local",
     "hostname": "homeassistant"
   },
   "schema": {
     "server": "str",
+    "serveractive": "str",
     "hostname": "str"
   }
 }
