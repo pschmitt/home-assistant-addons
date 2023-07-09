@@ -1,8 +1,9 @@
 {
   "name": "zabbix-agent",
-  "version": "1.4",
+  "version": "1.5",
   "slug": "zabbix-agent",
   "description": "Zabbix agent",
+  "url": "https://github.com/pschmitt/home-assistant-addons/tree/main/zabbix-agent",
   "arch": [
     "armhf",
     "armv7",
