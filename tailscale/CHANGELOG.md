@@ -1,3 +1,6 @@
+  # 1.66.4
+  - Update tailscale to 1.66.4
+
   # 1.66.1
   - Update tailscale to 1.66.1
 
