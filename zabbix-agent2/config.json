@@ -1,6 +1,6 @@
 {
   "name": "zabbix-agent2",
-  "version": "1.4",
+  "version": "1.5.1",
   "slug": "zabbix-agent2",
   "description": "Zabbix agent 2",
   "url": "https://github.com/pschmitt/home-assistant-addons/tree/main/zabbix-agent2",
