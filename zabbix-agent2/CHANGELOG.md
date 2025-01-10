@@ -1,3 +1,9 @@
+# [1.6.0] - 2025-01-10
+
+## Changed
+
+- Upgrade to Zabbix Agent 2 Version 7.0
+
 # [1.5.1] - 2024-09-03
 
 ## Fixed

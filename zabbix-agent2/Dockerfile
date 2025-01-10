@@ -1,10 +1,10 @@
 ARG BUILD_ARCH
 ARG BUILD_VERSION
-ARG BUILD_BASE_IMAGE=zabbix/zabbix-agent2:alpine-6.4-latest
+ARG BUILD_BASE_IMAGE=zabbix/zabbix-agent2:alpine-7.0-latest
 
 FROM ${BUILD_BASE_IMAGE} as builder
 
-FROM alpine:3.20
+FROM alpine
 
 LABEL maintainer "Philipp Schmitt <philipp@schmitt.co>"
 
