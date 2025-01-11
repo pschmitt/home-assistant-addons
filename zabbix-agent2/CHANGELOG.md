@@ -1,3 +1,13 @@
+# [1.7.0] - 2025-01-11
+
+## Fixed
+
+- Use correct permissions for docker socket
+
+## Changed
+
+- Drop unnecessary permissions
+
 # [1.6.0] - 2025-01-10
 
 ## Changed

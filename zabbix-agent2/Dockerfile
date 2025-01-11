@@ -6,13 +6,16 @@ FROM ${BUILD_BASE_IMAGE} as builder
 
 FROM alpine
 
-LABEL maintainer "Philipp Schmitt <philipp@schmitt.co>"
+LABEL org.opencontainers.image.authors="Philipp Schmitt <philipp@schmitt.co>, Lukas Magauer <lukas@magauer.eu>" \
+      org.opencontainers.image.url="https://github.com/pschmitt/home-assistant-addons/tree/main/zabbix-agent2" \
+      org.opencontainers.image.title="Zabbix Agent 2 image for Home Assistant Add-on" \
+      org.opencontainers.image.base.name="alpine"
 
 ENV LANG C.UTF-8
 
 # Install requirements for add-on
 RUN apk add --no-cache jq zabbix-agent2 && \
-    addgroup -g 1003 docker && \
+    addgroup -g 102 docker && \
     addgroup zabbix docker && \
     mkdir -p /etc/zabbix/zabbix_agent2.d/plugins.d
 
