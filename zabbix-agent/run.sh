@@ -29,7 +29,7 @@ unset ZABBIX_TLSPSK_IDENTITY
 unset ZABBIX_TLSPSK_SECRET
 
 if [ ${ZABBIX_USERPARAMETER} != "null" ]; then
-  sed -i 's@^#\?\s\?\(UserParameter\)=.*@\1='"${ZABBIX_USERPARAMETER}"'@' "${ZABBIX_CONFIG_FILE}"
+  sed -i 's@^#\?\s\?\(UserParameter\)=.*@\1='"${ZABBIX_USER_PARAMETER}"'@' "${ZABBIX_CONFIG_FILE}"
 fi
 
 # Run zabbix-agent in foreground
