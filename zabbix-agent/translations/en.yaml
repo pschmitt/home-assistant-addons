@@ -1,0 +1,24 @@
+---
+configuration:
+  server:
+    name: Server
+    description: >-
+      A list of comma-delimited IP addresses, optionally in CIDR notation,
+      or DNS names of Zabbix servers and Zabbix proxies.
+  serveractive:
+    name: ServerActive
+    description: The Zabbix server/proxy address or cluster configuration to get active checks from.
+  hostname:
+    name: Hostname
+    description: A parameter that defines the hostname.
+  tlspskidentity:
+    name: TLSPSKIdentity
+    description: The pre-shared key identity string, used for encrypted communications with Zabbix server.
+  tlspsksecret:
+    name: TLSPSKSecret
+    description: The pre-shared key string, used for encrypted communications with Zabbix server.
+  userparameter:
+    name: UserParameter
+    description: A user-defined parameter to monitor. Currently only one UserParameter possible.
+network:
+  10050/tcp: Listening port for passive monitoring.

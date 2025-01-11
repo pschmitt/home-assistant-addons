@@ -1,8 +1,8 @@
 {
-  "name": "Zabbix Agent Home Assistant add-on",
+  "name": "Zabbix Agent",
   "version": "1.6.0",
   "slug": "zabbix-agent",
-  "description": "Uses zabbix-agent package from current alpine version",
+  "description": "Zabbix Network Monitoring Agent",
   "url": "https://github.com/pschmitt/home-assistant-addons/tree/main/zabbix-agent",
   "arch": [
     "armhf",
