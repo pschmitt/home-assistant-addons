@@ -26,6 +26,7 @@
     "serveractive": "str",
     "hostname": "str",
     "tlspskidentity": "str?",
-    "tlspsksecret": "str?"
+    "tlspsksecret": "str?",
+    "userparameter": "str?"
   }
 }
