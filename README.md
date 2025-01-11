@@ -4,7 +4,7 @@
 
 Home Assistant addons by Philipp Schmitt
 
-Add to Home Assistant using the repository url: 
+Add to Home Assistant using the repository url:
 https://github.com/pschmitt/home-assistant-addons
 
 ## flicd
@@ -15,7 +15,7 @@ React to flic button presses on the Raspberry Pi.
 
 The flicd server needs a bluetooth controller. If you are running [Hass.io based on HassOS](https://www.home-assistant.io/blog/2018/07/11/hassio-images/), you can use the built-in controller. If you are running the older [Hass.io based on ResinOS](https://www.home-assistant.io/blog/2018/07/11/hassio-images/), you'll need to install the [Bluetooth BCM43xx](https://www.home-assistant.io/addons/bluetooth_bcm43xx/) add-on.
 
-```
+```text
 Available HCI devices found:
 hci0
 Trying hci0
@@ -27,7 +27,7 @@ Initialization of Bluetooth controller done!
 
 By default, flicd is going to use `hci0` bluetooth controller. If you have multiple bluetooth controllers you can configure flicd to use another controller by specifying it in `hci_dev` configuration setting of the add-on.
 
-```
+```json
 {
   "hci_dev": "hci1"
 }
@@ -63,7 +63,12 @@ Expose your raspicam.
 
 [Tailscale](https://tailscale.com) VPN service. This addon was originally published [here](https://github.com/tsujamin/hass-addons/tree/main/tailscale).
 
-## zabbix-agent{,2}
+## Zabbix Agent
 
-Zabbix agent{,2}.
+Uses zabbix-agent package from current alpine version.
 
+## Zabbix Agent 2
+
+Uses zabbix-agent2 package from current alpine version, also includes PostgreSQL and MongoDB plug-ins.
+
+To access docker api it is necessary to disable protection mode.
