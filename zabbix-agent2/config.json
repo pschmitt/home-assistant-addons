@@ -1,8 +1,8 @@
 {
-  "name": "Zabbix Agent 2 Home Assistant add-on",
+  "name": "Zabbix Agent 2",
   "version": "1.7.0",
   "slug": "zabbix-agent2",
-  "description": "Uses zabbix-agent2 package from current alpine version, also includes PostgreSQL and MongoDB plug-ins. To access docker api it is necessary to disable protection mode",
+  "description": "Zabbix Network Monitoring Agent 2",
   "url": "https://github.com/pschmitt/home-assistant-addons/tree/main/zabbix-agent2",
   "arch": [
     "aarch64",
