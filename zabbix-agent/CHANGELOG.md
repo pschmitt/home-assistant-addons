@@ -4,6 +4,10 @@
 
 - Drop unnecessary permissions
 
+## Added
+
+- Add configurable UserParameter option
+
 # [1.5] - 2023-07-09
 
 ## Changed
