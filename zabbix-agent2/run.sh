@@ -8,6 +8,7 @@ ZABBIX_SERVER_ACTIVE=$(jq --raw-output ".serveractive" "${CONFIG_PATH}")
 ZABBIX_HOSTNAME=$(jq --raw-output ".hostname" "${CONFIG_PATH}")
 ZABBIX_TLSPSK_IDENTITY=$(jq --raw-output ".tlspskidentity" "${CONFIG_PATH}")
 ZABBIX_TLSPSK_SECRET=$(jq --raw-output ".tlspsksecret" "${CONFIG_PATH}")
+ZABBIX_USERPARAMETER=$(jq --raw-output ".userparameter" "${CONFIG_PATH}")
 
 # Update zabbix-agent config
 ZABBIX_CONFIG_FILE=/etc/zabbix/zabbix_agent2.conf
@@ -26,6 +27,10 @@ if [ "${ZABBIX_TLSPSK_IDENTITY}" != "null" ] && [ "${ZABBIX_TLSPSK_SECRET}" != "
 fi
 unset ZABBIX_TLSPSK_IDENTITY
 unset ZABBIX_TLSPSK_SECRET
+
+if [ ${ZABBIX_USERPARAMETER} != "null" ]; then
+  sed -i 's@^#\?\s\?\(UserParameter\)=.*@\1='"${ZABBIX_USERPARAMETER}"'@' "${ZABBIX_CONFIG_FILE}"
+fi
 
 # Run zabbix-agent2 in foreground
 exec su zabbix -s /bin/ash -c "zabbix_agent2 -f"
