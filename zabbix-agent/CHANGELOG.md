@@ -1,3 +1,9 @@
+# [1.6.0] - 2025-01-11
+
+## Changed
+
+- Drop unnecessary permissions
+
 # [1.5] - 2023-07-09
 
 ## Changed
