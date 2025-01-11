@@ -8,7 +8,7 @@ ZABBIX_SERVER_ACTIVE=$(jq --raw-output ".serveractive" "${CONFIG_PATH}")
 ZABBIX_HOSTNAME=$(jq --raw-output ".hostname" "${CONFIG_PATH}")
 ZABBIX_TLSPSK_IDENTITY=$(jq --raw-output ".tlspskidentity" "${CONFIG_PATH}")
 ZABBIX_TLSPSK_SECRET=$(jq --raw-output ".tlspsksecret" "${CONFIG_PATH}")
-ZABBIX_USERPARAMETER=$(jq --raw-output ".userparameter" "${CONFIG_PATH}")
+ZABBIX_USER_PARAMETER=$(jq --raw-output ".userparameter" "${CONFIG_PATH}")
 
 # Update zabbix-agent config
 ZABBIX_CONFIG_FILE=/etc/zabbix/zabbix_agentd.conf
