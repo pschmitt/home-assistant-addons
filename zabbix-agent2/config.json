@@ -1,6 +1,6 @@
 {
   "name": "Zabbix Agent 2",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "slug": "zabbix-agent2",
   "description": "Zabbix Network Monitoring Agent 2",
   "url": "https://github.com/pschmitt/home-assistant-addons/tree/main/zabbix-agent2",
@@ -10,6 +10,7 @@
   ],
   "startup": "system",
   "boot": "auto",
+  "host_network": true,
   "host_ipc": true,
   "docker_api": true,
   "ports": {
