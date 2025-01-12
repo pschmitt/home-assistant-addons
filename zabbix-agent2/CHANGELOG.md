@@ -1,3 +1,10 @@
+# [1.7.1] - 2025-01-12
+
+## Fixed
+
+- Fix UserParameter value check
+- To detect host interface metrics container needs to run in host network
+
 # [1.7.0] - 2025-01-11
 
 ## Fixed

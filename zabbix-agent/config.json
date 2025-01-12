@@ -1,6 +1,6 @@
 {
   "name": "Zabbix Agent",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "slug": "zabbix-agent",
   "description": "Zabbix Network Monitoring Agent",
   "url": "https://github.com/pschmitt/home-assistant-addons/tree/main/zabbix-agent",
@@ -13,6 +13,7 @@
   ],
   "startup": "system",
   "boot": "auto",
+  "host_network": true,
   "host_ipc": true,
   "ports": {
     "10050/tcp": 10050
