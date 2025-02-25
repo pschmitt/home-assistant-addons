@@ -2,7 +2,6 @@
   "name": "picamera",
   "image": "pschmitt/home-assistant-addon-{arch}-picamera",
   "arch": [
-    "armhf",
     "aarch64"
   ],
   "version": "1.4.0",

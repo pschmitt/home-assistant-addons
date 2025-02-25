@@ -5,8 +5,7 @@
   "description": "Keepalived",
   "arch": [
     "aarch64",
-    "amd64",
-    "armv7"
+    "amd64"
   ],
   "startup": "system",
   "boot": "auto",

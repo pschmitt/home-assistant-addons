@@ -2,9 +2,7 @@
   "image": "pschmitt/home-assistant-addon-{arch}-flicd",
   "name": "flicd",
   "arch": [
-    "armv7",
     "aarch64",
-    "i386",
     "amd64"
   ],
   "version": "2.0.3",

@@ -5,11 +5,8 @@
   "description": "Zabbix Network Monitoring Agent",
   "url": "https://github.com/pschmitt/home-assistant-addons/tree/main/zabbix-agent",
   "arch": [
-    "armhf",
-    "armv7",
     "aarch64",
-    "amd64",
-    "i386"
+    "amd64"
   ],
   "startup": "system",
   "boot": "auto",

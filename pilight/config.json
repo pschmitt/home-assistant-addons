@@ -2,8 +2,7 @@
   "image": "pschmitt/home-assistant-addon-{arch}-pilight",
   "arch": [
     "amd64",
-    "aarch64",
-    "armhf"
+    "aarch64"
   ],
   "name": "pilight",
   "version": "1.4.1",
