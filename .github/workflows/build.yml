@@ -24,18 +24,8 @@ jobs:
           - aarch64
           - amd64
         exclude:
-          - addon: keepalived
-            arch: i386
-          - addon: keepalived
-            arch: armhf
           - addon: picamera
             arch: amd64
-          - addon: picamera
-            arch: i386
-          - addon: zabbix-agent2
-            arch: i386
-          - addon: zabbix-agent2
-            arch: armhf
 
     steps:
       - name: Checkout repo
