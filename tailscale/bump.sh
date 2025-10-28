@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+usage() {
+  echo "Usage: $(basename "$0") [--check] [VERSION]"
+}
+
 current_version() {
   jq -er .version ./config.json
 }
@@ -9,9 +13,49 @@ latest_version() {
     jq -er '.tag_name | sub("^v"; "")'
 }
 
+new_version_available() {
+  local current_version
+  local latest_version
+
+  current_version="$(current_version)"
+  latest_version="$(latest_version)"
+
+  [[ "$current_version" != "$latest_version" ]]
+}
+
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
 then
   set -eo pipefail
+
+  cd "$(cd "$(dirname "$0")" >/dev/null 2>&1; pwd -P)" || exit 9
+
+  case "$1" in
+    help|h|-h|--help)
+      usage
+      exit 0
+      ;;
+    --check)
+      CHECK_ONLY=1
+      shift
+      ;;
+    *)
+      usage >&2
+      exit 2
+      ;;
+  esac
+
+  # Handle --check flag
+  if [[ -n "$CHECK_ONLY" ]]
+  then
+    if new_version_available
+    then
+      echo "New version is available"
+      exit 1
+    fi
+
+    echo "Already on latest version: $(current_version)"
+    exit 0
+  fi
 
   VERSION="${1:-$(latest_version)}"
 
@@ -20,8 +64,6 @@ then
     echo "Missing version number" >&2
     exit 2
   fi
-
-  cd "$(cd "$(dirname "$0")" >/dev/null 2>&1; pwd -P)" || exit 9
 
   CURRENT_VERSION="$(current_version)"
 

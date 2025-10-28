@@ -1,0 +1,50 @@
+name: Bump Tailscale Version
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Run daily at 6 AM UTC
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  bump-tailscale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check and bump Tailscale version
+        id: bump
+        run: |
+          if ./tailscale/bump.sh --check
+          then
+            echo "has_update=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "has_update=true" >> $GITHUB_OUTPUT
+          ./tailscale/bump.sh
+
+      - name: Create Pull Request
+        if: steps.bump.outputs.has_update == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update Tailscale to latest version"
+          title: "chore: Update Tailscale to latest version"
+          body: |
+            Automated update of Tailscale addon.
+
+            Changes:
+            - Updated `tailscale/build.json` with new version
+            - Updated `tailscale/config.json` with new version
+            - Updated `tailscale/CHANGELOG.md`
+
+            Please review and merge if tests pass.
+          branch: bump-tailscale
+          delete-branch: true
+          labels: |
+            automated
+            dependencies
+            tailscale
