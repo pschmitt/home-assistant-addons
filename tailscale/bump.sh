@@ -38,10 +38,6 @@ then
       CHECK_ONLY=1
       shift
       ;;
-    *)
-      usage >&2
-      exit 2
-      ;;
   esac
 
   # Handle --check flag
