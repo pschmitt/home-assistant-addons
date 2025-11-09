@@ -1,3 +1,16 @@
+# [1.8.0] - 2025-11-09
+
+## Changed
+
+- Always building with latest version of Alpine
+- Always building with latest version of Zabbix-Agent
+- Update and upgrade apk packages when building
+- Update and upgrade apk packages when the addon starts
+
+## Added
+
+- zabbix-agent2-plugin-alpine to the build
+
 # [1.7.1] - 2025-01-12
 
 ## Fixed

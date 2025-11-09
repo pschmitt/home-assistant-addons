@@ -1,10 +1,10 @@
 ARG BUILD_ARCH
 ARG BUILD_VERSION
-ARG BUILD_BASE_IMAGE=zabbix/zabbix-agent2:alpine-7.4-latest
+ARG BUILD_BASE_IMAGE=zabbix/zabbix-agent2:alpine-latest
 
 FROM ${BUILD_BASE_IMAGE} as builder
 
-FROM alpine
+FROM alpine:latest
 
 LABEL org.opencontainers.image.authors="Philipp Schmitt <philipp@schmitt.co>, Lukas Magauer <lukas@magauer.eu>" \
       org.opencontainers.image.url="https://github.com/pschmitt/home-assistant-addons/tree/main/zabbix-agent2" \
@@ -14,7 +14,8 @@ LABEL org.opencontainers.image.authors="Philipp Schmitt <philipp@schmitt.co>, Lu
 ENV LANG C.UTF-8
 
 # Install requirements for add-on
-RUN apk add --no-cache jq zabbix-agent2 && \
+RUN apk update && \
+    apk add --no-cache jq zabbix-agent2 zabbix-agent2-plugin-alpine && \
     addgroup -g 102 docker && \
     addgroup zabbix docker && \
     mkdir -p /etc/zabbix/zabbix_agent2.d/plugins.d

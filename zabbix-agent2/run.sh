@@ -33,4 +33,6 @@ if [ "${ZABBIX_USER_PARAMETER}" != "null" ]; then
 fi
 
 # Run zabbix-agent2 in foreground
+exec apk update
+exec apk upgrade
 exec su zabbix -s /bin/ash -c "zabbix_agent2 -f"

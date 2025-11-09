@@ -1,3 +1,12 @@
+# [1.7.0] - 2025-11-09
+
+## Changed
+
+- Always building with latest version of Alpine
+- Always building with latest version of Zabbix-Agent
+- Update and upgrade apk packages when building
+- Update and upgrade apk packages when the addon starts
+
 # [1.6.1] - 2025-01-12
 
 ## Fixed
