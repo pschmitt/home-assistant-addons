@@ -32,9 +32,5 @@ if [ "${ZABBIX_USER_PARAMETER}" != "null" ]; then
   sed -i 's@^#\?\s\?\(UserParameter\)=.*@\1='"${ZABBIX_USER_PARAMETER}"'@' "${ZABBIX_CONFIG_FILE}"
 fi
 
-# Update and upgrade Zabbix-Agent
-apk update
-apk upgrade
-
 # Run zabbix-agent in foreground
-exec su zabbix -s /bin/ash -c "zabbix_agentd -f"
+exec su zabbix -s /bin/ash -c "zabbix_agent2 -f"

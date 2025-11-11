@@ -1,11 +1,9 @@
-# [1.7.0] - 2025-11-10
+# [1.7.0] - 2025-11-11
 
 ## Changed
 
-- Always building with latest version of Alpine
-- Always building with latest version of Zabbix-Agent
-- Update and upgrade apk packages when building
-- Update and upgrade apk packages when the addon starts
+- Building Docker image with latest version of Alpine 3.22
+- Building Docker image with latest version of Zabbix-Agent 7.4
 
 # [1.6.1] - 2025-01-12
 

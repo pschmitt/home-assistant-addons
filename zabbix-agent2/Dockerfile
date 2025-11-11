@@ -14,11 +14,12 @@ LABEL org.opencontainers.image.authors="Philipp Schmitt <philipp@schmitt.co>, Lu
 ENV LANG C.UTF-8
 
 # Install requirements for add-on
-RUN apk update && \
-    apk add --no-cache jq "zabbix-agent2=~7.4" zabbix-agent2-plugin-alpine && \
+RUN apk add --update-cache jq "zabbix-agent2=~7.4" zabbix-agent2-plugin-alpine && \
     addgroup -g 102 docker && \
     addgroup zabbix docker && \
-    mkdir -p /etc/zabbix/zabbix_agent2.d/plugins.d
+    mkdir -p /etc/zabbix/zabbix_agent2.d/plugins.d && \
+    apk cache clean && \
+    rm -rf /var/cache/apk/*
 
 # Copy zabbix-agent2 plugins
 COPY --from=builder ["/usr/sbin/zabbix-agent2-plugin", "/usr/sbin/zabbix-agent2-plugin"]

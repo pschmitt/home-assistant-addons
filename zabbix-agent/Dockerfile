@@ -11,8 +11,9 @@ LABEL org.opencontainers.image.authors="Philipp Schmitt <philipp@schmitt.co>, Lu
 ENV LANG C.UTF-8
 
 # Install requirements for add-on
-RUN apk update && \
-    apk add --no-cache jq "zabbix-agent=~7.4"
+RUN apk add --update-cache jq "zabbix-agent=~7.4" && \
+    apk cache clean && \
+    rm -rf /var/cache/apk/*
 
 # Copy data for add-on
 COPY run.sh /
