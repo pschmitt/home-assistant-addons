@@ -1,6 +1,6 @@
 ARG BUILD_ARCH
 ARG BUILD_VERSION
-ARG BUILD_BASE_IMAGE=zabbix/zabbix-agent2:alpine-latest
+ARG BUILD_BASE_IMAGE=zabbix/zabbix-agent2:alpine-7.4-latest
 
 FROM ${BUILD_BASE_IMAGE} as builder
 
@@ -15,7 +15,7 @@ ENV LANG C.UTF-8
 
 # Install requirements for add-on
 RUN apk update && \
-    apk add --no-cache jq zabbix-agent2 zabbix-agent2-plugin-alpine && \
+    apk add --no-cache jq "zabbix-agent2=~7.4" zabbix-agent2-plugin-alpine && \
     addgroup -g 102 docker && \
     addgroup zabbix docker && \
     mkdir -p /etc/zabbix/zabbix_agent2.d/plugins.d
