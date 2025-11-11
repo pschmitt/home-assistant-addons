@@ -1,6 +1,6 @@
 FROM alpine:3.22
 
-ARG BUILD_ARCH 
+ARG BUILD_ARCH
 ARG BUILD_VERSION
 
 LABEL org.opencontainers.image.authors="Philipp Schmitt <philipp@schmitt.co>, Lukas Magauer <lukas@magauer.eu>" \
