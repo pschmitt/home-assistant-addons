@@ -4,7 +4,7 @@ ARG BUILD_BASE_IMAGE=zabbix/zabbix-agent2:alpine-7.4-latest
 
 FROM ${BUILD_BASE_IMAGE} as builder
 
-FROM alpine:latest
+FROM alpine:3.22
 
 LABEL org.opencontainers.image.authors="Philipp Schmitt <philipp@schmitt.co>, Lukas Magauer <lukas@magauer.eu>" \
       org.opencontainers.image.url="https://github.com/pschmitt/home-assistant-addons/tree/main/zabbix-agent2" \

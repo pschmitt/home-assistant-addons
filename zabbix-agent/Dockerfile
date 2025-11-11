@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.22
 
 ARG BUILD_ARCH 
 ARG BUILD_VERSION
