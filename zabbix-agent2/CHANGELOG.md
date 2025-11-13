@@ -2,7 +2,7 @@
 
 ## Changed
 
-- Building Docker image with latest version of Alpine 3.22
+- Building Docker image with latest version of Alpine Edge
 - Building Docker image with latest version of Zabbix-Agent2 7.4
 
 ## Added
