@@ -2,8 +2,8 @@
 
 ## Changed
 
-- Building Docker image with latest version of Alpine Edge
-- Building Docker image with latest version of Zabbix-Agent2 7.4
+- Rebase container image on Alpine Edge
+- Zabbix-Agent2 7.4
 
 ## Added
 
