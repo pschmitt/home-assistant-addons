@@ -4,10 +4,7 @@
 
 - Rebase container image on Alpine Edge
 - Zabbix-Agent2 7.4
-
-## Added
-
-- zabbix-agent2-plugin-alpine to the build
+- Add zabbix-agent2-plugin-alpine
 
 # [1.7.1] - 2025-01-12
 
