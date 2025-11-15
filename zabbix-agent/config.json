@@ -1,6 +1,6 @@
 {
   "name": "Zabbix Agent",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "slug": "zabbix-agent",
   "description": "Zabbix Network Monitoring Agent",
   "url": "https://github.com/pschmitt/home-assistant-addons/tree/main/zabbix-agent",
