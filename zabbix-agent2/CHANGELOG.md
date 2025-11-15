@@ -1,3 +1,11 @@
+# [1.8.0] - 2025-11-11
+
+## Changed
+
+- Rebase container image on Alpine Edge
+- Zabbix-Agent2 7.4
+- Add zabbix-agent2-plugin-alpine
+
 # [1.7.1] - 2025-01-12
 
 ## Fixed

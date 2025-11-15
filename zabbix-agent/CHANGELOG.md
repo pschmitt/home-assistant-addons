@@ -1,3 +1,10 @@
+# [1.7.0] - 2025-11-11
+
+## Changed
+
+- Rebase container image on Alpine Edge
+- Zabbix-Agent 7.4
+
 # [1.6.1] - 2025-01-12
 
 ## Fixed
