@@ -28,6 +28,6 @@
     "hostname": "str",
     "tlspskidentity": "str?",
     "tlspsksecret": "str?",
-    "userparameter": "str?"
+    "userparameter": ["str?"]
   }
 }

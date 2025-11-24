@@ -19,6 +19,6 @@ configuration:
     description: The pre-shared key string, used for encrypted communications with Zabbix server.
   userparameter:
     name: UserParameter
-    description: A user-defined parameter to monitor. Currently only one UserParameter possible.
+    description: One or more user-defined parameters to monitor.
 network:
   10050/tcp: Listening port for passive monitoring.
