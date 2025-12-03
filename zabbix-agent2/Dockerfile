@@ -23,6 +23,9 @@ RUN apk add --no-cache jq "zabbix-agent2=~7.4" zabbix-agent2-plugin-alpine && \
 COPY --from=builder ["/usr/sbin/zabbix-agent2-plugin", "/usr/sbin/zabbix-agent2-plugin"]
 RUN echo -e "\nPlugins.PostgreSQL.System.Path=/usr/sbin/zabbix-agent2-plugin/mongodb\nPlugins.PostgreSQL.System.Path=/usr/sbin/zabbix-agent2-plugin/postgresql\n" >> /etc/zabbix/zabbix_agent2.conf
 
+# Enable loading config files from /etc/zabbix/zabbix_agent2.d
+RUN echo -e "\nInclude=/etc/zabbix/zabbix_agent2.d/*.conf\n" >> /etc/zabbix/zabbix_agent2.conf
+
 # Copy data for add-on
 COPY run.sh /
 RUN chmod a+x /run.sh
