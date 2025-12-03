@@ -1,4 +1,4 @@
-#!/usr/bin/env ash -x
+#!/usr/bin/env ash
 # shellcheck shell=dash
 
 # Extract config data
@@ -17,6 +17,11 @@ sed -i 's@^\(Server\)=.*@\1='"${ZABBIX_SERVER}"'@' "${ZABBIX_CONFIG_FILE}"
 sed -i 's@^\(ServerActive\)=.*@\1='"${ZABBIX_SERVER_ACTIVE}"'@' "${ZABBIX_CONFIG_FILE}"
 sed -i 's@^#\?\s\?\(Hostname\)=.*@\1='"${ZABBIX_HOSTNAME}"'@' "${ZABBIX_CONFIG_FILE}"
 
+# enable debug
+if [ $DEBUG == 1 ]; then
+  sed -i 's@^#\?\s\?\(DebugLevel\)=.*@\1='4'@' "${ZABBIX_CONFIG_FILE}"
+fi
+
 # Add TLS PSK config if variables are used
 if [ "${ZABBIX_TLSPSK_IDENTITY}" != "null" ] && [ "${ZABBIX_TLSPSK_SECRET}" != "null" ]; then
   ZABBIX_TLSPSK_SECRET_FILE=/etc/zabbix/tls_secret
@@ -31,7 +36,7 @@ unset ZABBIX_TLSPSK_SECRET
 
 # Add one or more user parameters to a userparams config file
 ZABBIX_USER_PARAM_CONFIG=/etc/zabbix/zabbix_agent2.d/zabbix_userparams.conf
-if [ -x "${ZABBIX_USER_PARAM_CONFIG}"]; then
+if [ -x "${ZABBIX_USER_PARAM_CONFIG}" ]; then
   rm -f "${ZABBIX_USER_PARAM_CONFIG}"
 fi
 if [ "${ZABBIX_USER_PARAMETER}" != "null" ]; then
