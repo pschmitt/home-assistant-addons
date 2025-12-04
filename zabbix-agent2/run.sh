@@ -39,7 +39,7 @@ ZABBIX_USER_PARAM_CONFIG=/etc/zabbix/zabbix_agent2.d/zabbix_userparams.conf
 if [ -x "${ZABBIX_USER_PARAM_CONFIG}" ]; then
   rm -vf "${ZABBIX_USER_PARAM_CONFIG}"
 fi
-if [ "${ZABBIX_USER_PARAMETER}" != "null" ]; then
+if [ -n "$ZABBIX_USER_PARAMETER" ] && [ "$ZABBIX_USER_PARAMETER" != "null" ]; then
   echo "${ZABBIX_USER_PARAMETER}" | while IFS= read -r userparam
   do
     echo -e "UserParameter=$userparam" >> "${ZABBIX_USER_PARAM_CONFIG}"
