@@ -37,7 +37,7 @@ unset ZABBIX_TLSPSK_SECRET
 # Add one or more user parameters to a userparams config file
 ZABBIX_USER_PARAM_CONFIG=/etc/zabbix/zabbix_agent2.d/zabbix_userparams.conf
 if [ -x "${ZABBIX_USER_PARAM_CONFIG}" ]; then
-  rm -f "${ZABBIX_USER_PARAM_CONFIG}"
+  rm -vf "${ZABBIX_USER_PARAM_CONFIG}"
 fi
 if [ "${ZABBIX_USER_PARAMETER}" != "null" ]; then
   echo "${ZABBIX_USER_PARAMETER}" | while IFS= read -r userparam
