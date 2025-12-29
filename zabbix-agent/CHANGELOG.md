@@ -1,3 +1,13 @@
+# [1.7.1] - 2025-12-29
+
+## Changed
+
+- Zabbix-Agent 7.4.6
+
+## Added
+
+- Zabbix-Agent version number to README.md
+
 # [1.7.0] - 2025-11-11
 
 ## Changed

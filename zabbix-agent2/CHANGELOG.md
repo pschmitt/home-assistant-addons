@@ -1,3 +1,25 @@
+# [1.8.2] - 2025-12-29
+
+## Changed
+
+- Zabbix-Agent2 7.4.6
+
+## Added
+
+- Zabbix-Agent2 version number to README.md
+
+# [1.8.1] - 2025-12-04
+
+## Changed
+
+- Implemented support for multiple UserParameters
+- Enabled loading other config files from zabbix_agent2.d.
+- Combined agent config file additions
+
+ ## Added
+
+ - Added debug mode (disabled by default) and fixed typo that broke if statement
+
 # [1.8.0] - 2025-11-11
 
 ## Changed
