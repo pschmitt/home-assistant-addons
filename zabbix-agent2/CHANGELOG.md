@@ -4,10 +4,6 @@
 
 - Zabbix-Agent2 7.4.6
 
-## Added
-
-- Zabbix-Agent2 version number to README.md
-
 # [1.8.1] - 2025-12-04
 
 ## Changed
