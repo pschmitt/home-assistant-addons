@@ -1,3 +1,6 @@
+  # 1.96.2
+  - Update tailscale to 1.96.2
+
   # 1.94.2
   - Update tailscale to 1.94.2
 
